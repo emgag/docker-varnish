@@ -1,0 +1,18 @@
+language: bash
+services: docker
+
+env:
+  - VERSION=4.1
+
+before_script:
+  - env | sort
+  - cd "$VERSION"
+  - image="emgag/varnish:$VERSION"
+
+script:
+  - docker build -t "$image" .
+  - docker run -d -p 127.0.0.1:80:80 -v $PWD/../test/default.vcl:/etc/varnish/default.vcl --name varnish "$image"
+
+after_script:
+  - docker images
+  - docker ps | grep -q varnish
