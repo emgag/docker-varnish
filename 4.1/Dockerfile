@@ -28,9 +28,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     python-docutils \
     python-sphinx \
-	&& apt-get clean \
-	&& apt-get autoremove -y \
-	&& rm -rf /var/lib/apt/lists/*
+    && apt-get clean \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
 #
 # install varnish
@@ -38,16 +38,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV VARNISH_VERSION=4.1.5
 ENV VARNISH_SHA256SUM=b52d4d05dd3c571c5538f2d821b237ec029691aebbc35918311ede256404feb3
 RUN mkdir -p /usr/local/src && \
-	cd /usr/local/src && \
-	curl -sfLO https://repo.varnish-cache.org/source/varnish-${VARNISH_VERSION}.tar.gz && \
-	echo "${VARNISH_SHA256SUM} varnish-${VARNISH_VERSION}.tar.gz" | sha256sum -c - && \
-	tar -xzf varnish-${VARNISH_VERSION}.tar.gz && \
-	cd varnish-${VARNISH_VERSION} && \
-	./autogen.sh && \
-	./configure && \
-	make install && \
-	cd /usr/local/src && \
-	rm -rf varnish-*
+    cd /usr/local/src && \
+    curl -sfLO https://repo.varnish-cache.org/source/varnish-${VARNISH_VERSION}.tar.gz && \
+    echo "${VARNISH_SHA256SUM} varnish-${VARNISH_VERSION}.tar.gz" | sha256sum -c - && \
+    tar -xzf varnish-${VARNISH_VERSION}.tar.gz && \
+    cd varnish-${VARNISH_VERSION} && \
+    ./autogen.sh && \
+    ./configure && \
+    make install && \
+    cd /usr/local/src && \
+    rm -rf varnish-*
 
 #
 # install stock varnish module library
