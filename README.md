@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions, added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration. 
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions (4.1 and 5.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration. 
 
 Shipped modules (vmods):
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
