@@ -16,3 +16,4 @@ script:
 after_script:
   - docker images
   - docker ps | grep -q varnish
+    
