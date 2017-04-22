@@ -12,7 +12,7 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`5.1.1`, `5.1`, `5`, `latest` (*5.1.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
+- [`5.1.2`, `5.1`, `5`, `latest` (*5.1.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
 - [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile)
 - [`4.1.5`, `4.1`, `4`,  (*4.1.5/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 

@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=5.1.1
-ENV VARNISH_SHA256SUM=6f4b85b52a827f28b3964fbe6a11296e2ed50156c70d511c10feff19459493ae
+ENV VARNISH_VERSION=5.1.2
+ENV VARNISH_SHA256SUM=39d858137e26948a7c85f07363f13f0778da61d234126e03a160a0cb9ba4fce3
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
     curl -sfLO https://repo.varnish-cache.org/source/varnish-${VARNISH_VERSION}.tar.gz && \
@@ -70,9 +70,12 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-dynamic
 #
+ENV LIBVMOD_DYNAMIC_VERSION=972f6e5063b80a8439a2ab631f4bcf5432dede77
+
 RUN cd /usr/local/src/ && \
     git clone https://github.com/nigoroll/libvmod-dynamic.git && \
     cd libvmod-dynamic && \
+    git reset --hard ${LIBVMOD_DYNAMIC_VERSION} && \
     ./autogen.sh && \
     ./configure && \
     make install && \
@@ -101,9 +104,12 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-geoip
 #
+ENV LIBVMOD_GEOIP_VERSION=b4d72ecc23895d4a0e9b28655093861f0c85cb66
+
 RUN cd /usr/local/src/ && \
     git clone https://github.com/varnish/libvmod-geoip.git && \
     cd libvmod-geoip && \
+    git reset --hard ${LIBVMOD_GEOIP_VERSION} && \
     ./autogen.sh && \
     ./configure && \
     make install && \

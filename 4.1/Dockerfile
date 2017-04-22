@@ -71,9 +71,12 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-dynamic
 #
+ENV LIBVMOD_DYNAMIC_VERSION=972f6e5063b80a8439a2ab631f4bcf5432dede77
+
 RUN cd /usr/local/src/ && \
     git clone https://github.com/nigoroll/libvmod-dynamic.git && \
     cd libvmod-dynamic && \
+    git reset --hard ${LIBVMOD_DYNAMIC_VERSION} && \
     ./autogen.sh && \
     ./configure && \
     make install && \
@@ -102,9 +105,12 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-geoip
 #
+ENV LIBVMOD_GEOIP_VERSION=b4d72ecc23895d4a0e9b28655093861f0c85cb66
+
 RUN cd /usr/local/src/ && \
     git clone https://github.com/varnish/libvmod-geoip.git && \
     cd libvmod-geoip && \
+    git reset --hard ${LIBVMOD_GEOIP_VERSION} && \
     ./autogen.sh && \
     ./configure && \
     make install && \
