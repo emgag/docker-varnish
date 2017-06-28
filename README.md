@@ -14,7 +14,7 @@ Shipped modules (vmods):
 
 - [`5.1.2`, `5.1`, `5`, `latest` (*5.1.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
 - [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile)
-- [`4.1.6`, `4.1`, `4`,  (*4.1.6/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+- [`4.1.7`, `4.1`, `4`,  (*4.1.7/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ## Varnish
 
@@ -22,7 +22,32 @@ From [varnish-cache.org](http://varnish-cache.org/intro/index.html#intro): _Varn
 
 ## How to use this image.
 
-TBD (sorry)
+By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
+  
+```
+FROM emgag/varnish:latest
+COPY default.vcl /etc/varnish/default.vcl
+```
+
+or mount a volume containing the varnish configuration to `/etc/varnish`, e.g with a docker-compose file:
+
+```
+version: '3'
+services:
+  varnish:
+    image: emgag/varnish:5.1
+    volumes:
+      - ./varnish:/etc/varnish
+    ports:
+      - "80:80"
+```
+
+Following environment variables can be used to customize the behaviour of the container:
+* VARNISH_CONFIG (default: `/etc/varnish/default.vcl`): The VCL file read on startup.
+* VARNISH_DAEMON_OPTS: Additional command line arguments for `varnishd`.
+* VARNISH_LISTEN (default: `:80`): The TCP port to listen for incoming client connections. Make sure to also expose the new port if this value is modified.
+* VARNISH_MANAGEMENT_LISTEN (default: `127.0.0.1:6082`): The TCP port to listen for management connections. See varnish documentation about [management interface authentication](https://varnish-cache.org/docs/trunk/users-guide/run_security.html) to setup a PSK.  
+* VARNISH_STORAGE (default: `malloc,100m`): The cache backend and its configuration 
 
 # License
 
