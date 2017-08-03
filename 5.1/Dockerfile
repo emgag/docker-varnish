@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=5.1.2
-ENV VARNISH_SHA256SUM=39d858137e26948a7c85f07363f13f0778da61d234126e03a160a0cb9ba4fce3
+ENV VARNISH_VERSION=5.1.3
+ENV VARNISH_SHA256SUM=7439c93ca581340f3722b8c790160f46dc6c5328188e4c0bc233c42f3f04a54e
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
     curl -sfLO https://repo.varnish-cache.org/source/varnish-${VARNISH_VERSION}.tar.gz && \
