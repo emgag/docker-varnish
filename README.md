@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions (4.1, 5.0 and 5.1), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration. 
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions (4.1 and 5.2), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration. 
 
 Shipped modules (vmods):
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
@@ -12,9 +12,16 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`5.1.3`, `5.1`, `5`, `latest` (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
-- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile) [DEPRECATED]
+**Note:** Only 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo. 
+
+- [`5.2.0`, `5.2`, `5`, `latest` (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`4.1.8`, `4.1`, `4`,  (*4.1.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+
+### Deprecated versions/tags
+
+- [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile) 
+- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile) 
+
 
 ## Varnish
 
@@ -35,7 +42,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:5.1
+    image: emgag/varnish:5.2
     volumes:
       - ./varnish:/etc/varnish
     ports:

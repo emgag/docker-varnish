@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=5.1.3
-ENV VARNISH_SHA256SUM=7439c93ca581340f3722b8c790160f46dc6c5328188e4c0bc233c42f3f04a54e
+ENV VARNISH_VERSION=5.2.0
+ENV VARNISH_SHA256SUM=cc4826a0480f49268d3996309e4b7e465151e9a523ccf8ead499ec575149f47e
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -71,8 +71,8 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-dynamic
 #
-ENV LIBVMOD_DYNAMIC_BRANCH=5.1
-ENV LIBVMOD_DYNAMIC_COMMIT=aefa03682e36668b7ac9ee8a8ba537561dec8d6d
+ENV LIBVMOD_DYNAMIC_BRANCH=master
+ENV LIBVMOD_DYNAMIC_COMMIT=89f489146f129a841ec91467178b28cea57236df
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
