@@ -7,12 +7,12 @@ all: 5.2 5.1 5.0 4.1
 		-t emgag/varnish:latest \
 		-t emgag/varnish:5 \
 		-t emgag/varnish:5.2 \
-		-t emgag/varnish:5.2.0 \
+		-t emgag/varnish:5.2.1 \
 		5.2
 	docker push emgag/varnish:latest
 	docker push emgag/varnish:5
 	docker push emgag/varnish:5.2
-	docker push emgag/varnish:5.2.0
+	docker push emgag/varnish:5.2.1
 
 5.1:
 	docker build --pull \
@@ -34,10 +34,10 @@ all: 5.2 5.1 5.0 4.1
 	docker build --pull \
 		-t emgag/varnish:4 \
 		-t emgag/varnish:4.1 \
-		-t emgag/varnish:4.1.8 \
+		-t emgag/varnish:4.1.9 \
 		4.1
 	docker push emgag/varnish:4
 	docker push emgag/varnish:4.1 
-	docker push emgag/varnish:4.1.8
+	docker push emgag/varnish:4.1.9
 
 

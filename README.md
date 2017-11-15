@@ -1,6 +1,9 @@
 # emgag/varnish
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
+[![Docker Pulls](https://img.shields.io/docker/pulls/emgag/varnish.svg)](https://hub.docker.com/r/emgag/varnish)
+[![Image Layers](https://images.microbadger.com/badges/image/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own image badge on microbadger.com")
+[![Latest Version](https://images.microbadger.com/badges/version/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own version badge on microbadger.com")
 
 Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions (4.1 and 5.2), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration. 
 
@@ -14,8 +17,8 @@ Shipped modules (vmods):
 
 **Note:** Only 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo. 
 
-- [`5.2.0`, `5.2`, `5`, `latest` (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
-- [`4.1.8`, `4.1`, `4`,  (*4.1.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+- [`5.2.1`, `5.2`, `5`, `latest` (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
+- [`4.1.9`, `4.1`, `4`,  (*4.1.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated versions/tags
 
