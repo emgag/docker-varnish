@@ -5,18 +5,14 @@ all: 6.0 5.2 5.1
 6.0:
 	docker build --pull \
 		-t emgag/varnish:testing \
+		-t emgag/varnish:6 \
+		-t emgag/varnish:6.0 \
+		-t emgag/varnish:6.0.0 \
 		6.0
-
-#	docker build --pull \
-#		-t emgag/varnish:latest \
-#		-t emgag/varnish:6 \
-#		-t emgag/varnish:6.0 \
-#		-t emgag/varnish:6.0.0 \
-#		6.0
-#	docker push emgag/varnish:latest
-#	docker push emgag/varnish:5
-#	docker push emgag/varnish:5.2
-#	docker push emgag/varnish:5.2.1
+	docker push emgag/varnish:testing
+	docker push emgag/varnish:6
+	docker push emgag/varnish:6.0
+	docker push emgag/varnish:6.0.0
 
 5.2:
 	docker build --pull \
