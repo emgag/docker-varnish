@@ -15,15 +15,21 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo. 
+**Note:** Only 6.0, 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
 
-- [`5.2.1`, `5.2`, `5`, `latest` (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
+Based on Debian Stretch:
+
+- [`6.0.0`, `6.0`, `6`, `latest` (*6.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+
+Based on Debian Jessie:
+
+- [`5.2.1`, `5.2`, `5`, (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`4.1.9`, `4.1`, `4`,  (*4.1.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated versions/tags
 
-- [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile) 
-- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile) 
+- [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
+- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile)
 
 
 ## Varnish
@@ -45,7 +51,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:5.2
+    image: emgag/varnish:6.0
     volumes:
       - ./varnish:/etc/varnish
     ports:
@@ -62,14 +68,6 @@ Following environment variables can be used to customize the behaviour of the co
 # License
 
 View [license information](https://github.com/emgag/docker-varnish/blob/master/LICENSE) for the software contained in this image.
-
-# Supported Docker versions
-
-This image is supported on Docker version 1.13.1.
-
-Support for older versions (down to 1.6) is provided on a best-effort basis.
-
-Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker daemon.
 
 ## Issues
 
