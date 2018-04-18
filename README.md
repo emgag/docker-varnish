@@ -5,7 +5,7 @@
 [![Image Layers](https://images.microbadger.com/badges/image/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own image badge on microbadger.com")
 [![Latest Version](https://images.microbadger.com/badges/version/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions (4.1 and 5.2), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration. 
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev/docker-varnish), but updated to recent varnish versions (4.1, 5.2 and 6.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
 
 Shipped modules (vmods):
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
@@ -15,15 +15,21 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo. 
+**Note:** Only 6.0, 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
+
+Based on Debian Stretch:
+
+- [`6.0.0`, `6.0`, `6`, `testing` (*6.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile) (**NOT READY FOR PRODUCTION YET**)
+
+Based on Debian Jessie:
 
 - [`5.2.1`, `5.2`, `5`, `latest` (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`4.1.9`, `4.1`, `4`,  (*4.1.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated versions/tags
 
-- [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile) 
-- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile) 
+- [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
+- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile)
 
 
 ## Varnish
@@ -35,7 +41,7 @@ From [varnish-cache.org](http://varnish-cache.org/intro/index.html#intro): _Varn
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM emgag/varnish:latest
+FROM emgag/varnish:6.0
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -45,7 +51,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:5.2
+    image: emgag/varnish:6.0
     volumes:
       - ./varnish:/etc/varnish
     ports:
@@ -62,14 +68,6 @@ Following environment variables can be used to customize the behaviour of the co
 # License
 
 View [license information](https://github.com/emgag/docker-varnish/blob/master/LICENSE) for the software contained in this image.
-
-# Supported Docker versions
-
-This image is supported on Docker version 1.13.1.
-
-Support for older versions (down to 1.6) is provided on a best-effort basis.
-
-Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker daemon.
 
 ## Issues
 
