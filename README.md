@@ -23,8 +23,8 @@ Based on Debian Stretch:
 
 Based on Debian Jessie:
 
-- [`5.2.1`, `5.2`, `5`, `latest` (*5.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
-- [`4.1.9`, `4.1`, `4`,  (*4.1.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+- [`5.2.1`, `5.2`, `5`, `latest` (*5.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
+- [`4.1.10`, `4.1`, `4`,  (*4.1.10/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated versions/tags
 

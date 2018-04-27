@@ -35,8 +35,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=4.1.9
-ENV VARNISH_SHA256SUM=22d884aad87e585ce5f3b4a6d33442e3a855162f27e48358c7c93af1b5f2fc87
+ENV VARNISH_VERSION=4.1.10
+ENV VARNISH_SHA256SUM=364833fbf6fb7540ddd54b62b5ac52b2fb00e915049c8446d71d334323e87c22
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
