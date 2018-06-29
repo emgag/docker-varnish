@@ -7,7 +7,7 @@ import dynamic;
 import geoip;
 import header;
 import saintmode;
-import purge;
+import softpurge;
 import std;
 import tcp;
 import var;

@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmhash-dev \
     libncurses-dev \
     libpcre3-dev \
-    libpcre3-dev \
     libtool \
     pkg-config \
     python-docutils \

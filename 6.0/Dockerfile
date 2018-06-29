@@ -23,7 +23,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmhash-dev \
     libncurses-dev \
     libpcre3-dev \
-    libpcre3-dev \
     libtool \
     pkg-config \
     python-docutils \
@@ -53,18 +52,20 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=master
-ENV VARNISHMODULES_COMMIT=c7f89a2b882b228ed6e38ef6eb629cf8a432f557
+ENV VARNISHMODULES_VERSION=0.15.0
+ENV VARNISHMODULES_SHA256SUM=8c03a13c348127e11b317006b9206d0b94c79d3f775f337b8fa1da818cfd2482
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
-    cd varnish-modules && \
-    git reset --hard ${VARNISHMODULES_COMMIT} && \
+    curl -sfL https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz \
+        -o varnish-modules-${VARNISHMODULES_VERSION}.tar.gz && \
+    echo "${VARNISHMODULES_SHA256SUM} varnish-modules-${VARNISHMODULES_VERSION}.tar.gz" | sha256sum -c - && \
+    tar -xzf varnish-modules-${VARNISHMODULES_VERSION}.tar.gz && \
+    cd varnish-modules-${VARNISHMODULES_VERSION} && \
     ./bootstrap && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf varnish-modules && \
+    rm -rf varnish-modules-${VARNISHMODULES_VERSION}* && \
     ldconfig
 
 #
