@@ -9,7 +9,7 @@ all: 6.0 5.2 4.1
 		-t emgag/varnish:6.0 \
 		-t emgag/varnish:6.0.0 \
 		6.0
-	docker push emgag/varnish:testing
+	docker push emgag/varnish:latest
 	docker push emgag/varnish:6
 	docker push emgag/varnish:6.0
 	docker push emgag/varnish:6.0.0
@@ -21,7 +21,6 @@ all: 6.0 5.2 4.1
 		-t emgag/varnish:5.2 \
 		-t emgag/varnish:5.2.1 \
 		5.2
-	docker push emgag/varnish:latest
 	docker push emgag/varnish:5
 	docker push emgag/varnish:5.2
 	docker push emgag/varnish:5.2.1
