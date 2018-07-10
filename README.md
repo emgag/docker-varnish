@@ -5,7 +5,7 @@
 [![Image Layers](https://images.microbadger.com/badges/image/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own image badge on microbadger.com")
 [![Latest Version](https://images.microbadger.com/badges/version/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1, 5.2 and 6.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1 and 6.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
 
 Shipped modules (vmods):
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
@@ -15,7 +15,7 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 6.0, 5.2 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
+**Note:** Only 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
 
 Based on Debian Stretch:
 
@@ -23,11 +23,11 @@ Based on Debian Stretch:
 
 Based on Debian Jessie:
 
-- [`5.2.1`, `5.2`, `5` (*5.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`4.1.10`, `4.1`, `4`,  (*4.1.10/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated/Unmaintained versions/tags
 
+- [`5.2.1`, `5.2`, `5` (*5.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
 - [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile)
 
