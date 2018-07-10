@@ -4,7 +4,7 @@ all: 6.0 5.2 4.1
 
 6.0:
 	docker build --pull \
-		-t emgag/varnish:testing \
+		-t emgag/varnish:latest \
 		-t emgag/varnish:6 \
 		-t emgag/varnish:6.0 \
 		-t emgag/varnish:6.0.0 \
@@ -16,7 +16,6 @@ all: 6.0 5.2 4.1
 
 5.2:
 	docker build --pull \
-		-t emgag/varnish:latest \
 		-t emgag/varnish:5 \
 		-t emgag/varnish:5.2 \
 		-t emgag/varnish:5.2.1 \
