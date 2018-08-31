@@ -19,7 +19,7 @@ Shipped modules (vmods):
 
 Based on Debian Stretch:
 
-- [`6.0.0`, `6.0`, `6`, `latest` (*6.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.0.1`, `6.0`, `6`, `latest` (*6.0.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
 

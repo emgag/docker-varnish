@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.0.0
-ENV VARNISH_SHA256SUM=c7b2839c95b2bf1f336abc20b5d8b149c3aa72deff142f2379d1d431206b0bee
+ENV VARNISH_VERSION=6.0.1
+ENV VARNISH_SHA256SUM=47f28e4da9d46f0e48fbe6067de734a01786081cda681bf2764f87914339f3b8
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
