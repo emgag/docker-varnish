@@ -7,6 +7,7 @@ env:
   - VERSION=5.1
   - VERSION=5.2
   - VERSION=6.0
+  - VERSION=6.1
 
 before_script:
   - env | sort
@@ -15,7 +16,7 @@ before_script:
 
 script:
   - docker build -t "$image" .
-  - docker run -d -p 127.0.0.1:80:80 -v $PWD/../test/default.vcl:/etc/varnish/default.vcl --name varnish "$image"
+  - docker run -d -p 127.0.0.1:80:80 -v $PWD/../test/$VERSION.vcl:/etc/varnish/default.vcl --name varnish "$image"
 
 after_script:
   - docker images

@@ -5,7 +5,7 @@
 [![Image Layers](https://images.microbadger.com/badges/image/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own image badge on microbadger.com")
 [![Latest Version](https://images.microbadger.com/badges/version/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1 and 6.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1, 6.0 and 6.1), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
 
 Shipped modules (vmods):
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
@@ -15,11 +15,12 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
+**Note:** Only 6.1, 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
 
 Based on Debian Stretch:
 
-- [`6.0.1`, `6.0`, `6`, `latest` (*6.0.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.1.0`, `6.1`, `6`, `latest` (*6.1.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
+- [`6.0.1`, `6.0`, (*6.0.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
 
@@ -41,7 +42,7 @@ From [varnish-cache.org](http://varnish-cache.org/intro/index.html#intro): _Varn
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM emgag/varnish:6.0
+FROM emgag/varnish:6.1
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -51,7 +52,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:6.0
+    image: emgag/varnish:6.1
     volumes:
       - ./varnish:/etc/varnish
     ports:
