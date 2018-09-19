@@ -15,11 +15,12 @@ Shipped modules (vmods):
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
+**Note:** Only 6.1, 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
 
 Based on Debian Stretch:
 
-- [`6.0.2`, `6.0`, `6`, `latest` (*6.0.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.1.0`, `6.1`, `6`, `latest` (*6.1.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
+- [`6.0.2`, `6.0`, (*6.0.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
 
