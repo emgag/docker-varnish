@@ -5,9 +5,9 @@
 [![Image Layers](https://images.microbadger.com/badges/image/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own image badge on microbadger.com")
 [![Latest Version](https://images.microbadger.com/badges/version/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1 and 6.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1, 6.0 and 6.1), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
-Shipped modules (vmods):
+Shipped VMODs:
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
