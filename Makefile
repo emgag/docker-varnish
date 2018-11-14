@@ -1,6 +1,6 @@
 .PHONY: all 6.0 5.2 5.1 5.0 4.1
 
-all: 6.0 5.2 4.1
+all: 6.0 4.1
 
 6.0:
 	docker build --pull \
