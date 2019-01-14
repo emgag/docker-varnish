@@ -15,7 +15,7 @@ Shipped VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 6.1, 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
+**Note:** Only 6.1, 6.0 and 4.1 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo.
 
 Based on Debian Stretch:
 
@@ -35,7 +35,7 @@ Based on Debian Jessie:
 
 ## Varnish
 
-From [varnish-cache.org](http://varnish-cache.org/intro/index.html#intro): _Varnish Cache is a web application accelerator also known as a caching HTTP reverse proxy. You install it in front of any server that speaks HTTP and configure it to cache the contents. Varnish Cache is really, really fast. It typically speeds up delivery with a factor of 300 - 1000x, depending on your architecture._
+From [varnish-cache.org](https://varnish-cache.org/intro/index.html): Varnish Cache is a web application accelerator also known as a caching HTTP reverse proxy. You install it in front of any server that speaks HTTP and configure it to cache the contents. Varnish Cache is really, really fast. It typically speeds up delivery with a factor of 300 - 1000x, depending on your architecture._
 
 ## How to use this image.
 
