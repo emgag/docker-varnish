@@ -5,27 +5,40 @@
 [![Image Layers](https://images.microbadger.com/badges/image/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own image badge on microbadger.com")
 [![Latest Version](https://images.microbadger.com/badges/version/emgag/varnish.svg)](https://microbadger.com/images/emgag/varnish "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1 and 6.0), added some additional [vmods](http://varnish-cache.org/vmods/#vmods) and support for additional configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1, 6.0 and 6.1), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
-Shipped modules (vmods):
+Shipped VMODs:
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support
+
+Deprecated VMODs:
+
+* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, and 4.1.10, **removed in 6.1,  6.0.2-1 and 4.1.10-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
 
 ## Supported tags and respective `Dockerfile` links
 
-**Note:** Only 6.0 and 4.1 are [versions supported by varnish](http://varnish-cache.org/releases/index.html) and still maintained in this repo.
+**Notes:** 
+* Only 6.1, 6.0 and 4.1 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo.
+* Version 6.1 is still marked as testing because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
 
 Based on Debian Stretch:
 
-- [`6.0.2`, `6.0`, `6`, `latest` (*6.0.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.1.1`, `6.1`, `testing` (*6.1.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
+- [`6.0.2-1`  (*6.0.2-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
 
-- [`4.1.10`, `4.1`, `4`,  (*4.1.10/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+- [`4.1.10-1` (*4.1.10-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated/Unmaintained versions/tags
+
+**Retired tags:**
+
+- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed. 
+- *4*, *4.1*: Points to 4.1.10 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed.
+
+**No longer supported by varnish:**
 
 - [`5.2.1`, `5.2`, `5` (*5.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
@@ -34,7 +47,7 @@ Based on Debian Jessie:
 
 ## Varnish
 
-From [varnish-cache.org](http://varnish-cache.org/intro/index.html#intro): _Varnish Cache is a web application accelerator also known as a caching HTTP reverse proxy. You install it in front of any server that speaks HTTP and configure it to cache the contents. Varnish Cache is really, really fast. It typically speeds up delivery with a factor of 300 - 1000x, depending on your architecture._
+From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish Cache is a web application accelerator also known as a caching HTTP reverse proxy. You install it in front of any server that speaks HTTP and configure it to cache the contents. Varnish Cache is really, really fast. It typically speeds up delivery with a factor of 300 - 1000x, depending on your architecture._
 
 ## How to use this image.
 

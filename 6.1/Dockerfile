@@ -27,8 +27,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.0.2
-ENV VARNISH_SHA256SUM=2d036bf9bbbe833ff5f92243fa3a89b0f90bee19ab7f8a29a5dae23818d7e816
+ENV VARNISH_VERSION=6.1.1
+ENV VARNISH_SHA256SUM=e0ee7c88a8149d8890b26fd9e1d909859ea895a39ca188d76a96869cff87c93d
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -45,27 +45,26 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_VERSION=0.15.0
-ENV VARNISHMODULES_SHA256SUM=8c03a13c348127e11b317006b9206d0b94c79d3f775f337b8fa1da818cfd2482
+ENV VARNISHMODULES_BRANCH=6.1
+ENV VARNISHMODULES_COMMIT=c1c9b6ff4652c34aeff68f209d983be684caeb32
 
 RUN cd /usr/local/src/ && \
-    curl -sfL https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz \
-        -o varnish-modules-${VARNISHMODULES_VERSION}.tar.gz && \
-    echo "${VARNISHMODULES_SHA256SUM} varnish-modules-${VARNISHMODULES_VERSION}.tar.gz" | sha256sum -c - && \
-    tar -xzf varnish-modules-${VARNISHMODULES_VERSION}.tar.gz && \
-    cd varnish-modules-${VARNISHMODULES_VERSION} && \
+    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
+    cd varnish-modules && \
+    git reset --hard ${VARNISHMODULES_COMMIT} && \
     ./bootstrap && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf varnish-modules-${VARNISHMODULES_VERSION}* && \
+    rm -rf varnish-modules && \
     ldconfig
+
 
 #
 # install libvmod-dynamic
 #
-ENV LIBVMOD_DYNAMIC_BRANCH=6.0
-ENV LIBVMOD_DYNAMIC_COMMIT=890a391409a04010f7ce0a1cb58932d5813b4612
+ENV LIBVMOD_DYNAMIC_BRANCH=master
+ENV LIBVMOD_DYNAMIC_COMMIT=9da11d19d58942d4bf5843ed559796ec1bee8f24
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
