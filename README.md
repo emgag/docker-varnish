@@ -14,7 +14,7 @@ Shipped VMODs:
 
 Deprecated VMODs:
 
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, and 4.1.10, *removed in 6.1,  6.0.2-1 and 4.1.10-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib*. 
+* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, and 4.1.10, **removed in 6.1,  6.0.2-1 and 4.1.10-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
 
 ## Supported tags and respective `Dockerfile` links
 
