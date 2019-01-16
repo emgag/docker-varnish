@@ -2,11 +2,6 @@ FROM debian:stretch-slim
 LABEL maintainer="Matthias Blaser <mb@emgag.com>"
 
 #
-# enable contrib repo
-#
-RUN sed -i 's/main/main contrib/g' /etc/apt/sources.list
-
-#
 # install varnish build deps
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,10 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     curl \
-    geoip-database-contrib \
     git \
     libedit-dev \
-    libgeoip-dev \
     libjemalloc-dev \
     libmhash-dev \
     libncurses-dev \
@@ -52,14 +45,14 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=master
-ENV VARNISHMODULES_COMMIT=d6f7a8be3aa54588211d2a5d73a1210c447bb8ff
+ENV VARNISHMODULES_BRANCH=6.1
+ENV VARNISHMODULES_COMMIT=c1c9b6ff4652c34aeff68f209d983be684caeb32
 
 RUN cd /usr/local/src/ && \
     git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
     cd varnish-modules && \
     git reset --hard ${VARNISHMODULES_COMMIT} && \
-    ./autogen.sh && \
+    ./bootstrap && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
@@ -101,27 +94,6 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-digest* && \
     ldconfig
-
-#
-# install libvmod-geoip
-#
-ENV LIBVMOD_GEOIP_VERSION=1.0.3
-ENV LIBVMOD_GEOIP_SHA256SUM=da4b26d26adfa2486035670a08969add40971ae24eeac9108fa3607594feadf7
-
-RUN cd /usr/local/src/ && \
-    curl -sfLO https://github.com/varnish/libvmod-geoip/archive/libvmod-geoip-${LIBVMOD_GEOIP_VERSION}.tar.gz && \
-    echo "${LIBVMOD_GEOIP_SHA256SUM} libvmod-geoip-${LIBVMOD_GEOIP_VERSION}.tar.gz" | sha256sum -c - && \
-    tar -xzf libvmod-geoip-${LIBVMOD_GEOIP_VERSION}.tar.gz && \
-    cd libvmod-geoip-libvmod-geoip-${LIBVMOD_GEOIP_VERSION} && \
-    ./autogen.sh && \
-    ./configure && \
-    make install && \
-    cd /usr/local/src && \
-    rm -rf libvmod-geoip* && \
-    ldconfig
-
-# update geoip database
-RUN /usr/sbin/geoip-database-contrib_update
 
 # init
 COPY init.sh /init.sh

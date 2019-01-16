@@ -11,7 +11,10 @@ Shipped VMODs:
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support
+
+Deprecated VMODs:
+
+* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, and 4.1.10, *removed in 6.1,  6.0.2-1 and 4.1.10-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib*. 
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -22,13 +25,20 @@ Shipped VMODs:
 Based on Debian Stretch:
 
 - [`6.1.1`, `6.1`, `testing` (*6.1.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
-- [`6.0.2`, `6.0`, `6`, `latest` (*6.0.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.0.2-1`  (*6.0.2-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
 
-- [`4.1.10`, `4.1`, `4`,  (*4.1.10/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+- [`4.1.10-1` (*4.1.10-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated/Unmaintained versions/tags
+
+**Retired tags:**
+
+- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed. 
+- *4*, *4.1*: Points to 4.1.10 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed.
+
+**No longer supported by varnish:**
 
 - [`5.2.1`, `5.2`, `5` (*5.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
 - [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)

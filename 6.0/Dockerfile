@@ -2,11 +2,6 @@ FROM debian:stretch-slim
 LABEL maintainer="Matthias Blaser <mb@emgag.com>"
 
 #
-# enable contrib repo
-#
-RUN sed -i 's/main/main contrib/g' /etc/apt/sources.list
-
-#
 # install varnish build deps
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,10 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     curl \
-    geoip-database-contrib \
     git \
     libedit-dev \
-    libgeoip-dev \
     libjemalloc-dev \
     libmhash-dev \
     libncurses-dev \
@@ -71,20 +64,18 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-dynamic
 #
-ENV LIBVMOD_DYNAMIC_VERSION=0.4
-ENV LIBVMOD_DYNAMIC_SHA256SUM=221ee019f0dd882a036d8eb8a57f92b5fd22d7c3a0fa74d89986b45e07e2ff26
+ENV LIBVMOD_DYNAMIC_BRANCH=6.0
+ENV LIBVMOD_DYNAMIC_COMMIT=890a391409a04010f7ce0a1cb58932d5813b4612
 
 RUN cd /usr/local/src/ && \
-    curl -sfL https://github.com/nigoroll/libvmod-dynamic/archive/v${LIBVMOD_DYNAMIC_VERSION}.tar.gz \
-        -o libvmod-dynamic-${LIBVMOD_DYNAMIC_VERSION}.tar.gz  && \
-    echo "${LIBVMOD_DYNAMIC_SHA256SUM} libvmod-dynamic-${LIBVMOD_DYNAMIC_VERSION}.tar.gz" | sha256sum -c - && \
-    tar -xzf libvmod-dynamic-${LIBVMOD_DYNAMIC_VERSION}.tar.gz && \
-    cd libvmod-dynamic-${LIBVMOD_DYNAMIC_VERSION} && \
+    git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
+    cd libvmod-dynamic && \
+    git reset --hard ${LIBVMOD_DYNAMIC_COMMIT} && \
     ./autogen.sh && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf libvmod-digest* && \
+    rm -rf libvmod-dynamic && \
     ldconfig
 
 #
@@ -104,27 +95,6 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-digest* && \
     ldconfig
-
-#
-# install libvmod-geoip
-#
-ENV LIBVMOD_GEOIP_VERSION=1.0.3
-ENV LIBVMOD_GEOIP_SHA256SUM=da4b26d26adfa2486035670a08969add40971ae24eeac9108fa3607594feadf7
-
-RUN cd /usr/local/src/ && \
-    curl -sfLO https://github.com/varnish/libvmod-geoip/archive/libvmod-geoip-${LIBVMOD_GEOIP_VERSION}.tar.gz && \
-    echo "${LIBVMOD_GEOIP_SHA256SUM} libvmod-geoip-${LIBVMOD_GEOIP_VERSION}.tar.gz" | sha256sum -c - && \
-    tar -xzf libvmod-geoip-${LIBVMOD_GEOIP_VERSION}.tar.gz && \
-    cd libvmod-geoip-libvmod-geoip-${LIBVMOD_GEOIP_VERSION} && \
-    ./autogen.sh && \
-    ./configure && \
-    make install && \
-    cd /usr/local/src && \
-    rm -rf libvmod-geoip* && \
-    ldconfig
-
-# update geoip database
-RUN /usr/sbin/geoip-database-contrib_update
 
 # init
 COPY init.sh /init.sh

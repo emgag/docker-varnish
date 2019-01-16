@@ -4,7 +4,6 @@ import cookie;
 import digest;
 import directors;
 import dynamic;
-import geoip;
 import header;
 import saintmode;
 import softpurge;
