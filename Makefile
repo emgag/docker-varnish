@@ -9,7 +9,8 @@ all: 6.1 6.0 4.1
 		-t emgag/varnish:6.1.1 \
 		6.1
 	docker push emgag/varnish:testing
-	docker push emgag/varnish:6.1.0
+	docker push emgag/varnish:6.1
+	docker push emgag/varnish:6.1.1
 
 6.0:
 	docker build --pull \
