@@ -20,11 +20,11 @@ Deprecated VMODs:
 
 **Notes:** 
 * Only 6.1, 6.0 and 4.1 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo.
-* Version 6.1 is still marked as testing because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
+* **Version 6.1 is still marked as testing** because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
 
 Based on Debian Stretch:
 
-- [`6.1.1`, `6.1`, `testing` (*6.1.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
+- [`6.1.1`, `testing` (*6.1.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
 - [`6.0.2-1`  (*6.0.2-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
@@ -35,8 +35,9 @@ Based on Debian Jessie:
 
 **Retired tags:**
 
-- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed. 
-- *4*, *4.1*: Points to 4.1.10 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed.
+- *latest*: Removed because it's just too confusing with breaking changes. Latest version formerly tagged as latest was *6.0.2*.
+- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions. 
+- *4*, *4.1*: Points to 4.1.10 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions.
 
 **No longer supported by varnish:**
 
