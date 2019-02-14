@@ -44,8 +44,8 @@ all: 6.1 6.0 4.1
 
 4.1:
 	docker build --pull \
-		-t emgag/varnish:4.1.10-1 \
+		-t emgag/varnish:4.1.11 \
 		4.1
-	docker push emgag/varnish:4.1.10-1
+	docker push emgag/varnish:4.1.11
 
 

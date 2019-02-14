@@ -29,7 +29,7 @@ Based on Debian Stretch:
 
 Based on Debian Jessie:
 
-- [`4.1.10-1` (*4.1.10-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
+- [`4.1.11` (*4.1.11/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated/Unmaintained versions/tags
 
