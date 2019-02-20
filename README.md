@@ -2,8 +2,8 @@
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 [![Docker Pulls](https://img.shields.io/docker/pulls/emgag/varnish.svg)](https://hub.docker.com/r/emgag/varnish)
-[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.2-1.svg)](https://microbadger.com/images/emgag/varnish:6.0.2-1 "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.2-1.svg)](https://microbadger.com/images/emgag/varnish:6.0.2-1 "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.3.svg)](https://microbadger.com/images/emgag/varnish:6.0.3 "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.3.svg)](https://microbadger.com/images/emgag/varnish:6.0.3 "Get your own version badge on microbadger.com")
 
 Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1, 6.0 and 6.1), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
@@ -25,7 +25,7 @@ Deprecated VMODs:
 Based on Debian Stretch:
 
 - [`6.1.1`, `testing` (*6.1.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
-- [`6.0.2-1`  (*6.0.2-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.0.3`  (*6.0.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 Based on Debian Jessie:
 
@@ -55,7 +55,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM emgag/varnish:6.0.2-1
+FROM emgag/varnish:6.0.3
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -65,7 +65,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:6.0.2-1
+    image: emgag/varnish:6.0.3
     volumes:
       - ./varnish:/etc/varnish
     ports:
