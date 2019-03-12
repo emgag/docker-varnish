@@ -96,6 +96,23 @@ RUN cd /usr/local/src/ && \
     rm -rf libvmod-digest* && \
     ldconfig
 
+#
+# install libvmod-querystring
+#
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=c883ac31c322a853bafb34406797833eaa46254b7ce020a6d5cafb9bd9dbbe1e
+
+RUN cd /usr/local/src/ && \
+    curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
+    echo "${LIBVMOD_QUERYSTRING_SHA256SUM} vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz" | sha256sum -c - && \
+    tar -xzf vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
+    cd vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION} && \
+    ./configure && \
+    make install && \
+    cd /usr/local/src && \
+    rm -rf vmod-querystring* && \
+    ldconfig
+
 # init
 COPY init.sh /init.sh
 

@@ -7,6 +7,7 @@ import dynamic;
 import header;
 import saintmode;
 import purge;
+import querystring;
 import std;
 import tcp;
 import var;
