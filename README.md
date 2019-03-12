@@ -10,8 +10,8 @@ Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments
 Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
+* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**From 6.1.1-1 and 6.0.3-1, no support in 4.1.x**)
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
-* [varnish-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**From 6.1.1-1 and 6.0.3-1, no support in 4.1.x**)
 
 Deprecated VMODs:
 
