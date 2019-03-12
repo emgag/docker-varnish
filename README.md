@@ -56,7 +56,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM emgag/varnish:6.0.3
+FROM emgag/varnish:6.0.3-1
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -66,7 +66,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:6.0.3
+    image: emgag/varnish:6.0.3-1
     volumes:
       - ./varnish:/etc/varnish
     ports:
