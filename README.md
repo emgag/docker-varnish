@@ -5,22 +5,22 @@
 [![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.3-1.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-1 "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.3-1.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-1 "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (4.1, 6.0 and 6.1), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0 and 6.1), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
 Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
-* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**From 6.1.1-1 and 6.0.3-1, no support in 4.1.x**)
+* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**From 6.1.1-1 and 6.0.3-1**)
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
 
 Deprecated VMODs:
 
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, and 4.1.10, **removed in 6.1,  6.0.2-1 and 4.1.10-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
+* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, **removed in 6.1 and 6.0.2-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
 
 ## Supported tags and respective `Dockerfile` links
 
 **Notes:** 
-* Only 6.1, 6.0 and 4.1 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo.
+* Only 6.1 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](/emgag/docker-varnish/tree/4.1).
 * **Version 6.1 is still marked as testing** because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
 
 Based on Debian Stretch:
@@ -28,9 +28,6 @@ Based on Debian Stretch:
 - [`6.1.1-1`, `testing` (*6.1.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
 - [`6.0.3-1`  (*6.0.3-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
-Based on Debian Jessie:
-
-- [`4.1.11` (*4.1.11/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/4.1/Dockerfile)
 
 ### Deprecated/Unmaintained versions/tags
 
@@ -38,14 +35,8 @@ Based on Debian Jessie:
 
 - *latest*: Removed because it's just too confusing with breaking changes. Latest version formerly tagged as latest was *6.0.2*.
 - *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions. 
-- *4*, *4.1*: Points to 4.1.10 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions.
-
-**No longer supported by varnish:**
-
-- [`5.2.1`, `5.2`, `5` (*5.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.2/Dockerfile)
-- [`5.1.3`, `5.1`  (*5.1.3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.1/Dockerfile)
-- [`5.0.0`, `5.0` (*5.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/5.0/Dockerfile)
-
+- *5*, *5.x*
+- *4*, *4.x*
 
 ## Varnish
 
