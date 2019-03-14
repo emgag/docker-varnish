@@ -20,8 +20,8 @@ Deprecated VMODs:
 ## Supported tags and respective `Dockerfile` links
 
 **Notes:** 
-* Only 6.1 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/varnish/emgag/docker-varnish/tree/4.1).
-* **Version 6.1 is still marked as testing** because some issues with compatibility of some vmods, see #4.
+* Only 6.1 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
+* **Version 6.1 is still marked as testing** because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
 
 Based on Debian Stretch:
 
