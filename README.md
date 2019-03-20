@@ -10,7 +10,7 @@ Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments
 Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
-* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.1.1-1 and 6.0.3-1**)
+* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.2 and 6.0.3-1**)
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
 
 Deprecated VMODs:
@@ -21,11 +21,10 @@ Deprecated VMODs:
 
 **Notes:** 
 * Only 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
+* **Version 6.2 is untested and not used in production yet!**
 
-Based on Debian Stretch:
-
-- [`6.2.0` (*6.1.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
-- [`6.0.3-1`  (*6.0.3-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.2.0` (*6.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile)
+- [`6.0.3-1` (*6.0.3-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 
 ### Deprecated/Unmaintained versions/tags
