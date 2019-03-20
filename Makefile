@@ -1,14 +1,14 @@
-.PHONY: all 6.1 6.0
+.PHONY: all 6.2 6.0
 
-all: 6.1 6.0
+all: 6.2 6.0
 
-6.1:
+6.2:
 	docker build --pull \
 		-t emgag/varnish:testing \
-		-t emgag/varnish:6.1.1-1 \
-		6.1
+		-t emgag/varnish:6.2.0 \
+		6.2
 	docker push emgag/varnish:testing
-	docker push emgag/varnish:6.1.1-1
+	docker push emgag/varnish:6.2.0
 
 6.0:
 	docker build --pull \

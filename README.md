@@ -15,17 +15,16 @@ Shipped VMODs:
 
 Deprecated VMODs:
 
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, **removed in 6.1 and 6.0.2-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
+* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, **removed in >=6.0.2-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
 
 ## Supported tags and respective `Dockerfile` links
 
 **Notes:** 
-* Only 6.1 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
-* **Version 6.1 is still marked as testing** because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
+* Only 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
 
 Based on Debian Stretch:
 
-- [`6.1.1-1`, `testing` (*6.1.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
+- [`6.2.0` (*6.1.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
 - [`6.0.3-1`  (*6.0.3-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 
@@ -34,9 +33,10 @@ Based on Debian Stretch:
 **Retired tags:**
 
 - *latest*: Removed because it's just too confusing with breaking changes. Latest version formerly tagged as latest was *6.0.2*.
-- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions. 
-- *5*, *5.x*
-- *4*, *4.x*
+- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions.
+- *6.1.x*: Retired by varnish 
+- *5*, *5.x*: Retired by varnish
+- *4*, *4.x*:  [Retired by varnish, as of 15th of March 2019](https://varnish-cache.org/lists/pipermail/varnish-announce/2018-December/000732.html)
 
 ## Varnish
 
