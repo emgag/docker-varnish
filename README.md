@@ -2,41 +2,39 @@
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 [![Docker Pulls](https://img.shields.io/docker/pulls/emgag/varnish.svg)](https://hub.docker.com/r/emgag/varnish)
-[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.3-1.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-1 "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.3-1.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-1 "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.3-2.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-2 "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.3-2.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-2 "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0 and 6.1), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0 and 6.2), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
 Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
-* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.1.1-1 and 6.0.3-1**)
+* [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.2 and 6.0.3-1**)
 * [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
 
 Deprecated VMODs:
 
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, **removed in 6.1 and 6.0.2-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
+* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, **removed in >=6.0.2-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
 
 ## Supported tags and respective `Dockerfile` links
 
+- [`6.2.0` (*6.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile)
+- [`6.0.3-1` (*6.0.3-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+
 **Notes:** 
-* Only 6.1 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
-* **Version 6.1 is still marked as testing** because some issues with compatibility of some vmods, see [issues/4](https://github.com/emgag/docker-varnish/issues/4).
-
-Based on Debian Stretch:
-
-- [`6.1.1-1`, `testing` (*6.1.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.1/Dockerfile)
-- [`6.0.3-1`  (*6.0.3-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
-
+* Only 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
+* **Version 6.2 is untested and not used in production yet!**
 
 ### Deprecated/Unmaintained versions/tags
 
 **Retired tags:**
 
 - *latest*: Removed because it's just too confusing with breaking changes. Latest version formerly tagged as latest was *6.0.2*.
-- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions. 
-- *5*, *5.x*
-- *4*, *4.x*
+- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions.
+- *6.1.x*: Retired by varnish 
+- *5*, *5.x*: Retired by varnish
+- *4*, *4.x*:  [Retired by varnish, as of 15th of March 2019](https://varnish-cache.org/lists/pipermail/varnish-announce/2018-December/000732.html)
 
 ## Varnish
 
@@ -47,7 +45,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM emgag/varnish:6.0.3-1
+FROM emgag/varnish:6.0.3-2
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -57,7 +55,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:6.0.3-1
+    image: emgag/varnish:6.0.3-2
     volumes:
       - ./varnish:/etc/varnish
     ports:

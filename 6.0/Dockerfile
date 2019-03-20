@@ -18,8 +18,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpcre3-dev \
     libtool \
     pkg-config \
-    python-docutils \
-    python-sphinx \
+    python \
+    python3 \
+    python3-docutils \
+    python3-sphinx \
     && apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
@@ -95,12 +97,11 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-digest* && \
     ldconfig
-
 #
 # install libvmod-querystring
 #
-ENV LIBVMOD_QUERYSTRING_VERSION=2.0
-ENV LIBVMOD_QUERYSTRING_SHA256SUM=c883ac31c322a853bafb34406797833eaa46254b7ce020a6d5cafb9bd9dbbe1e
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0.1
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=34540b0fb515bfbf9aaa4154be5372ce5aa8c7050f35f07dc186c85bb7e976c0
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \

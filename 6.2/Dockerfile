@@ -18,8 +18,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpcre3-dev \
     libtool \
     pkg-config \
-    python-docutils \
-    python-sphinx \
+    python3 \
+    python3-docutils \
+    python3-sphinx \
     && apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
@@ -27,8 +28,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.1.1
-ENV VARNISH_SHA256SUM=e0ee7c88a8149d8890b26fd9e1d909859ea895a39ca188d76a96869cff87c93d
+ENV VARNISH_VERSION=6.2.0
+ENV VARNISH_SHA256SUM=c37af353aca25a83d22f9c5ce0ae800fe433e4d02e1457e02886a5849f988e53
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -45,8 +46,8 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=6.1
-ENV VARNISHMODULES_COMMIT=c1c9b6ff4652c34aeff68f209d983be684caeb32
+ENV VARNISHMODULES_BRANCH=master
+ENV VARNISHMODULES_COMMIT=43046b581f5eaa9877bfaee8425d5eae2d738cca
 
 RUN cd /usr/local/src/ && \
     git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
@@ -64,7 +65,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=9da11d19d58942d4bf5843ed559796ec1bee8f24
+ENV LIBVMOD_DYNAMIC_COMMIT=528635e10202166842a0b0f58ce2c6998e88ecd3
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -98,8 +99,8 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-querystring
 #
-ENV LIBVMOD_QUERYSTRING_VERSION=2.0
-ENV LIBVMOD_QUERYSTRING_SHA256SUM=c883ac31c322a853bafb34406797833eaa46254b7ce020a6d5cafb9bd9dbbe1e
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0.1
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=34540b0fb515bfbf9aaa4154be5372ce5aa8c7050f35f07dc186c85bb7e976c0
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
