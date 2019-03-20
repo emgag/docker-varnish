@@ -10,7 +10,7 @@ all: 6.2 6.0
 
 6.0:
 	docker build --pull \
-		-t emgag/varnish:6.0.3-1 \
+		-t emgag/varnish:6.0.3-2 \
 		6.0
-	docker push emgag/varnish:6.0.3-1
+	docker push emgag/varnish:6.0.3-2
 
