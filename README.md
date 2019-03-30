@@ -2,8 +2,8 @@
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 [![Docker Pulls](https://img.shields.io/docker/pulls/emgag/varnish.svg)](https://hub.docker.com/r/emgag/varnish)
-[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.3-2.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-2 "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.3-2.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-2 "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.3-3.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-3 "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.3-3.svg)](https://microbadger.com/images/emgag/varnish:6.0.3-3 "Get your own version badge on microbadger.com")
 
 Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0 and 6.2), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
@@ -11,7 +11,7 @@ Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.2 and 6.0.3-1**)
-* [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie,header,saintmode,softpurge,tcp,var,vsthrottle,xkey)
+* [varnish-modules](https://github.com/varnish/varnish-modules) (using the [nigoroll/varnish-modules](https://github.com/nigoroll/varnish-modules) fork) : Official varnish vmod collection (cookie, header, saintmode, softpurge, tcp, var, vsthrottle, xkey)
 
 Deprecated VMODs:
 
@@ -19,8 +19,8 @@ Deprecated VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`6.2.0` (*6.2.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile)
-- [`6.0.3-2` (*6.0.3-2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.2.0-1` (*6.2.0-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile)
+- [`6.0.3-3` (*6.0.3-3/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 **Notes:** 
 * Only 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
@@ -45,7 +45,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM emgag/varnish:6.0.3-2
+FROM emgag/varnish:6.0.3-3
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -55,7 +55,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: emgag/varnish:6.0.3-2
+    image: emgag/varnish:6.0.3-3
     volumes:
       - ./varnish:/etc/varnish
     ports:

@@ -46,8 +46,8 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=master
-ENV VARNISHMODULES_COMMIT=43046b581f5eaa9877bfaee8425d5eae2d738cca
+ENV VARNISHMODULES_BRANCH=6.2
+ENV VARNISHMODULES_COMMIT=f5132a89746e82d927105f4ac6d06b6ae69f7367
 
 RUN cd /usr/local/src/ && \
     git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \

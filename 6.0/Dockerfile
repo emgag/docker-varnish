@@ -47,21 +47,20 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_VERSION=0.15.0
-ENV VARNISHMODULES_SHA256SUM=8c03a13c348127e11b317006b9206d0b94c79d3f775f337b8fa1da818cfd2482
+ENV VARNISHMODULES_BRANCH=6.0
+ENV VARNISHMODULES_COMMIT=059497cbddd7faeff529c1b9038715e5ba6891ee
 
 RUN cd /usr/local/src/ && \
-    curl -sfL https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz \
-        -o varnish-modules-${VARNISHMODULES_VERSION}.tar.gz && \
-    echo "${VARNISHMODULES_SHA256SUM} varnish-modules-${VARNISHMODULES_VERSION}.tar.gz" | sha256sum -c - && \
-    tar -xzf varnish-modules-${VARNISHMODULES_VERSION}.tar.gz && \
-    cd varnish-modules-${VARNISHMODULES_VERSION} && \
+    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
+    cd varnish-modules && \
+    git reset --hard ${VARNISHMODULES_COMMIT} && \
     ./bootstrap && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf varnish-modules-${VARNISHMODULES_VERSION}* && \
+    rm -rf varnish-modules && \
     ldconfig
+
 
 #
 # install libvmod-dynamic
