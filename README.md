@@ -5,7 +5,7 @@
 [![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.4.svg)](https://microbadger.com/images/emgag/varnish:6.0.4 "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.4.svg)](https://microbadger.com/images/emgag/varnish:6.0.4 "Get your own version badge on microbadger.com")
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0 and 6.2), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0, 6.2 and 6.3), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
 Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
@@ -19,12 +19,13 @@ Deprecated VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
+- [`6.3.0` (*6.3.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.3/Dockerfile)
 - [`6.2.1` (*6.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile)
 - [`6.0.4` (*6.0.4/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 **Notes:** 
-* Only 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
-* **Version 6.2 is untested and not used in production yet!**
+* Only 6.3, 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
+* **Version 6.2 and 6.3 are untested and not used in production yet!**
 
 ### Deprecated/Unmaintained versions/tags
 
