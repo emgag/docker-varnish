@@ -2,8 +2,8 @@
 
 [![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 [![Docker Pulls](https://img.shields.io/docker/pulls/emgag/varnish.svg)](https://hub.docker.com/r/emgag/varnish)
-[![](https://images.microbadger.com/badges/image/emgag/varnish:6.0.4.svg)](https://microbadger.com/images/emgag/varnish:6.0.4 "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/emgag/varnish:6.0.4.svg)](https://microbadger.com/images/emgag/varnish:6.0.4 "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/emgag/varnish:6.3.0.svg)](https://microbadger.com/images/emgag/varnish:6.3.0 "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/emgag/varnish:6.3.0.svg)](https://microbadger.com/images/emgag/varnish:6.3.0 "Get your own version badge on microbadger.com")
 
 Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0, 6.2 and 6.3), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
