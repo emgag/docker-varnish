@@ -11,11 +11,7 @@ Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.2 and 6.0.3-1**)
-* [varnish-modules](https://github.com/varnish/varnish-modules) (using the [nigoroll/varnish-modules](https://github.com/nigoroll/varnish-modules) fork) : Official varnish vmod collection (cookie, header, saintmode, softpurge, tcp, var, vsthrottle, xkey)
-
-Deprecated VMODs:
-
-* [libvmod-geoip](https://github.com/varnish/libvmod-geoip): GeoIP lookup support, up until 6.0.2, **removed in >=6.0.2-1 because MaxMind no longer supports the legacy database format and the update mechanism in Debian contrib**. 
+* [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie, header, saintmode, softpurge, tcp, var, vsthrottle, xkey)
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -24,18 +20,7 @@ Deprecated VMODs:
 - [`6.0.4` (*6.0.4/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
 
 **Notes:** 
-* Only 6.3, 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) and still maintained in this repo. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
-* **Version 6.2 and 6.3 are untested and not used in production yet!**
-
-### Deprecated/Unmaintained versions/tags
-
-**Retired tags:**
-
-- *latest*: Removed because it's just too confusing with breaking changes. Latest version formerly tagged as latest was *6.0.2*.
-- *6*, *6.0*: Points to 6.0.2 but will no longer be updated to not break backwards compatibility, since libvmod-geoip is removed in newer versions.
-- *6.1.x*: Retired by varnish 
-- *5*, *5.x*: Retired by varnish
-- *4*, *4.x*:  [Retired by varnish, as of 15th of March 2019](https://varnish-cache.org/lists/pipermail/varnish-announce/2018-December/000732.html)
+* Only 6.3, 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) still maintained in this repo and available for download from dockerhub. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
 
 ## Varnish
 
