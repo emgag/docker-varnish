@@ -15,12 +15,12 @@ Shipped VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`6.3.0` (*6.3.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.3/Dockerfile)
-- [`6.2.1` (*6.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile)
-- [`6.0.4` (*6.0.4/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile)
+- [`6.3.0` (*6.3.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.3/Dockerfile), based on debian:buster-slim.
+- [`6.2.1` (*6.2.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.2/Dockerfile), based on debian:stretch-slim.
+- [`6.0.4` (*6.0.4/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
 
 **Notes:** 
-* Only 6.3, 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html) still maintained in this repo and available for download from dockerhub. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
+* Only 6.3, 6.2 and 6.0 are [versions supported by varnish](https://varnish-cache.org/releases/index.html), still maintained in this repo and available for download from dockerhub. For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).
 
 ## Varnish
 
