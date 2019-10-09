@@ -10,7 +10,7 @@ all: 6.3 6.2 6.0
 	docker build --pull \
 		-t emgag/varnish:${IMAGE_63_VERSION} \
 		6.3
-#	docker push emgag/varnish:${IMAGE_63_VERSION}
+	docker push emgag/varnish:${IMAGE_63_VERSION}
 
 6.2:
 	docker build --pull \
