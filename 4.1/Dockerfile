@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     libedit-dev \
+    libgeoip-dev \
     libjemalloc-dev \
     libmhash-dev \
     libncurses-dev \
@@ -94,6 +95,23 @@ RUN cd /usr/local/src/ && \
     make install && \
     cd /usr/local/src && \
     rm -rf libvmod-digest* && \
+    ldconfig
+
+#
+# install libvmod-geoip
+#
+ENV LIBVMOD_GEOIP_BRANCH=master
+ENV LIBVMOD_GEOIP_COMMIT=b4d72ecc23895d4a0e9b28655093861f0c85cb66
+
+RUN cd /usr/local/src/ && \
+    git clone -b ${LIBVMOD_GEOIP_BRANCH} https://github.com/varnish/libvmod-geoip.git && \
+    cd libvmod-geoip && \
+    git reset --hard ${LIBVMOD_GEOIP_COMMIT} && \
+    ./autogen.sh && \
+    ./configure && \
+    make install && \
+    cd /usr/local/src && \
+    rm -rf libvmod-geoip && \
     ldconfig
 
 # init

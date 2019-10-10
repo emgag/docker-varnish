@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     curl \
-    geoip-database-contrib \
     git \
     libedit-dev \
     libgeoip-dev \
@@ -118,9 +117,6 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-geoip && \
     ldconfig
-
-# update geoip database
-RUN /usr/sbin/geoip-database-contrib_update
 
 # init
 COPY init.sh /init.sh
