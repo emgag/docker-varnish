@@ -1,6 +1,11 @@
+## 2019-10-10
+
+* Final update for 4.1 branch with working builds for 4.1.x, 5.0.x, 5.1.x and 5.2.x and reupload latest image for each release (but w/o shipped geoip databases)
+* Clarify documentation about available tags
+
 ## 2019-10-09
 
 * Initial support for 6.3.0
 * Add libgetdns for advanced DNS features in vmod-dynamic (6.3)
-* Remove deprecated and unmaintained tags from docker hub (6, 6.0, 4.\*, 5.\*, latest, testing), reuploaded latest 4.1 image (4.1.11).
+* Remove deprecated and unmaintained tags from docker hub (6, 6.0, 4.\*, 5.\*, latest, testing), reuploaded latest 4.1 image (4.1.11)
 * Add CHANGELOG
