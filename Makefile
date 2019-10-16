@@ -9,7 +9,7 @@ IMAGE_63_VERSION := 6.3.0
 all: 6.3 6.2 6.0
 
 readme:
-	docker run -v ${CURDIR}:/workspace \
+	docker run --rm -v ${CURDIR}:/workspace \
 		-e DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME} \
 		-e DOCKERHUB_PASSWORD=${DOCKERHUB_PASSWORD} \
 		-e DOCKERHUB_REPOSITORY=${REPO} \
