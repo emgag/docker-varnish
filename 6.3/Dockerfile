@@ -32,8 +32,8 @@ RUN \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.3.0
-ENV VARNISH_SHA256SUM=95ccdec5f1dcba8b41d24e685b3f2379fbc6b9701d106cc78011d4d09a73947f
+ENV VARNISH_VERSION=6.3.1
+ENV VARNISH_SHA256SUM=d1a26c7dad43b842c97e48f1c6422bb0b24c02cd6a74c53a2cf17e64da254175
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
