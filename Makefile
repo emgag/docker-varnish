@@ -1,10 +1,9 @@
 .PHONY: all 6.3 6.2 6.0 readme
-include .env
 
 REPO := emgag/varnish
-IMAGE_60_VERSION := 6.0.5
-IMAGE_62_VERSION := 6.2.2
-IMAGE_63_VERSION := 6.3.1
+IMAGE_60_VERSION := 6.0.6
+IMAGE_62_VERSION := 6.2.3
+IMAGE_63_VERSION := 6.3.2
 
 all: 6.3 6.2 6.0
 
