@@ -1,3 +1,7 @@
+## 2020-02-05
+
+* Update to 6.3.2, 6.2.3 and 6.0.6 to address [VSV00005 Varnish HTTP Proxy Protocol V2 Denial of Service](https://varnish-cache.org/security/VSV00005.html).
+
 ## 2019-10-21
 
 * Update to 6.3.1, 6.2.2 and 6.0.5 to address [VSV00004 (Workspace information leak)](http://varnish-cache.org/security/VSV00004.html#vsv00004).
