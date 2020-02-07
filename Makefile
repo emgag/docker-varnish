@@ -1,4 +1,4 @@
-.PHONY: all 6.3 6.2 6.0 readme
+.PHONY: all 6.3 6.2 6.0 builder readme
 
 REPO := emgag/varnish
 IMAGE_60_VERSION := 6.0.6
@@ -32,3 +32,8 @@ readme:
 		-t ${REPO}:${IMAGE_60_VERSION} \
 		6.0
 	docker push ${REPO}:${IMAGE_60_VERSION}
+
+builder:
+	docker build --pull \
+		-t ${REPO}:6.3-vmod-builder-xenial \
+		builder/6.3-xenial
