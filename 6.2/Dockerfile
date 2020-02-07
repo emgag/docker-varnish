@@ -33,7 +33,7 @@ ENV VARNISH_SHA256SUM=5ecbd05e345e7f7ef0082b916edab3597ee9962058102bccb0a4055920
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
-    curl -sfLO http://varnish-cache.org/_downloads/varnish-${VARNISH_VERSION}.tgz && \
+    curl -sfLO https://varnish-cache.org/_downloads/varnish-${VARNISH_VERSION}.tgz && \
     echo "${VARNISH_SHA256SUM} varnish-${VARNISH_VERSION}.tgz" | sha256sum -c - && \
     tar -xzf varnish-${VARNISH_VERSION}.tgz && \
     cd varnish-${VARNISH_VERSION} && \
