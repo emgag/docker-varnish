@@ -1,6 +1,5 @@
 # emgag/varnish
 
-[![Build Status](https://api.travis-ci.org/emgag/docker-varnish.svg?branch=master)](https://travis-ci.org/emgag/docker-varnish)
 [![Docker Pulls](https://img.shields.io/docker/pulls/emgag/varnish.svg)](https://hub.docker.com/r/emgag/varnish)
 [![](https://images.microbadger.com/badges/image/emgag/varnish:6.3.2.svg)](https://microbadger.com/images/emgag/varnish:6.3.2 "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/emgag/varnish:6.3.2.svg)](https://microbadger.com/images/emgag/varnish:6.3.2 "Get your own version badge on microbadger.com")
