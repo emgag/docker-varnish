@@ -1,35 +1,39 @@
-FROM debian:stretch-slim
+# syntax=docker/dockerfile:experimental
+FROM debian:buster-slim
 LABEL maintainer="Matthias Blaser <mb@emgag.com>"
 
 #
 # install varnish build deps
 #
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    automake \
-    autotools-dev \
-    build-essential \
-    ca-certificates \
-    curl \
-    git \
-    libedit-dev \
-    libjemalloc-dev \
-    libmhash-dev \
-    libncurses-dev \
-    libpcre3-dev \
-    libtool \
-    pkg-config \
-    python3 \
-    python3-docutils \
-    python3-sphinx \
-    && apt-get clean \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
+RUN \
+    --mount=type=cache,target=/var/cache/apt \
+    --mount=type=cache,target=/var/lib/apt/lists \
+        apt-get update \
+        && apt-get install -y --no-install-recommends \
+            automake \
+            autotools-dev \
+            build-essential \
+            ca-certificates \
+            curl \
+            git \
+            libedit-dev \
+            libgetdns-dev \
+            libjemalloc-dev \
+            libmhash-dev \
+            libncurses-dev \
+            libpcre3-dev \
+            libtool \
+            pkg-config \
+            python3 \
+            python3-docutils \
+            python3-sphinx \
+        && apt-get autoremove -y
 
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.2.3
-ENV VARNISH_SHA256SUM=5ecbd05e345e7f7ef0082b916edab3597ee9962058102bccb0a4055920be6609
+ENV VARNISH_VERSION=6.4.0
+ENV VARNISH_SHA256SUM=f636ba2d881b146f480fb52efefae468b36c2c3e6620d07460f9ccbe364a76c2
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -46,11 +50,11 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=6.2
-ENV VARNISHMODULES_COMMIT=f5132a89746e82d927105f4ac6d06b6ae69f7367
+ENV VARNISHMODULES_BRANCH=6.4
+ENV VARNISHMODULES_COMMIT=0032ed81820cbc7d8d0bdda8f0a14dc968a9de4f
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
+    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
     cd varnish-modules && \
     git reset --hard ${VARNISHMODULES_COMMIT} && \
     ./bootstrap && \
@@ -65,7 +69,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=528635e10202166842a0b0f58ce2c6998e88ecd3
+ENV LIBVMOD_DYNAMIC_COMMIT=71820eb7f91ad7e87755d02e522893a9e12dd55b
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -81,8 +85,8 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-digest
 #
-ENV LIBVMOD_DIGEST_BRANCH=master
-ENV LIBVMOD_DIGEST_COMMIT=c42b9fa62a4fba2d861d87b9699d9f591198249c
+ENV LIBVMOD_DIGEST_BRANCH=6.3
+ENV LIBVMOD_DIGEST_COMMIT=1793bea9e9b7c7dce4d8df82397d22ab9fa296f0
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DIGEST_BRANCH} https://github.com/varnish/libvmod-digest.git && \
