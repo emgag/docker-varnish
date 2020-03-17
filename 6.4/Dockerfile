@@ -50,8 +50,8 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=6.3
-ENV VARNISHMODULES_COMMIT=3608d1ec11793de1bc94492b4a2d1b8d48a6ca98
+ENV VARNISHMODULES_BRANCH=6.4
+ENV VARNISHMODULES_COMMIT=0032ed81820cbc7d8d0bdda8f0a14dc968a9de4f
 
 RUN cd /usr/local/src/ && \
     git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
@@ -69,7 +69,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=88161b3018305915c9cf0d2b45f695da709275da
+ENV LIBVMOD_DYNAMIC_COMMIT=71820eb7f91ad7e87755d02e522893a9e12dd55b
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
