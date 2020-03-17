@@ -1,7 +1,7 @@
 ## 2020-03-18
 
 * Add 6.4.0 build
-* Drop 6.2 support as it's not longer supported by varnish
+* Drop 6.2 support as it's no longer supported by varnish
 
 ## 2020-02-05
 
