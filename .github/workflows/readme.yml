@@ -17,7 +17,7 @@ jobs:
 
       - name: Update README on dockerhub
         run: >
-          docker run --rm -v .:/workspace
+          docker run --rm -v ${{ github.workspace }}:/workspace
           -e DOCKERHUB_USERNAME="${{ secrets.DOCKER_USERNAME }}"
           -e DOCKERHUB_PASSWORD="${{ secrets.DOCKER_PASSWORD }}"
           -e DOCKERHUB_REPOSITORY="emgag/varnish"
