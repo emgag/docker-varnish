@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - README.md
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update README on dockerhub
+        run: >
+          docker run --rm -v .:/workspace
+            -e DOCKERHUB_USERNAME="${{ secrets.DOCKER_USERNAME }}"
+            -e DOCKERHUB_PASSWORD="${{ secrets.DOCKER_PASSWORD }}"
+            -e DOCKERHUB_REPOSITORY="emgag/varnish"
+            -e README_FILEPATH="/workspace/README.md"
+            peterevans/dockerhub-description@sha256:03be22045dfedb1360665e0f62c27d90a800906476b35a7164b242b5d861f4ef
+

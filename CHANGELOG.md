@@ -1,3 +1,7 @@
+## 2020-09-06
+
+* Upload new images to Github Container Registry as well 
+
 ## 2020-03-18
 
 * Add 6.4.0 build
