@@ -1,0 +1,58 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/build.yml
+
+env:
+  GHCR_IMAGE: ghcr.io/emgag/varnish
+  GHCR_USER: emgag-service
+  DOCKERHUB_IMAGE: emgag/varnish
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: ["6.0", "6.3", "6.4"]
+        include:
+          - version: "6.0"
+            tag: "6.0.6"
+          - version: "6.3"
+            tag: "6.3.2"
+          - version: "6.4"
+            tag: "6.4.0"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build varnish {{ matrix.version }}
+        run: >
+          docker build --pull
+          -t ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
+          -t ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
+          {{ matrix.version }}
+
+      - name: Login to github docker registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ghcr.io
+          username: ${{ env.GHCR_USER }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Push ${{ matrix.version }} image to GHCR
+        run: docker push ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
+
+      # also push to dockerhub as for now
+      - name: Login to dockerhub
+        uses: azure/docker-login@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push ${{ matrix.version }} image to dockerhub
+        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ tag }}
+
