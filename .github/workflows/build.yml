@@ -34,7 +34,7 @@ jobs:
           docker build --pull
           -t ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
           -t ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
-          {{ matrix.version }}
+          ${{ matrix.version }}
 
       - name: Login to github docker registry
         uses: azure/docker-login@v1
