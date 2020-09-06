@@ -5,29 +5,26 @@ LABEL maintainer="Matthias Blaser <mb@emgag.com>"
 #
 # install varnish build deps
 #
-RUN \
-    --mount=type=cache,target=/var/cache/apt \
-    --mount=type=cache,target=/var/lib/apt/lists \
-        apt-get update \
-        && apt-get install -y --no-install-recommends \
-            automake \
-            autotools-dev \
-            build-essential \
-            ca-certificates \
-            curl \
-            git \
-            libedit-dev \
-            libgetdns-dev \
-            libjemalloc-dev \
-            libmhash-dev \
-            libncurses-dev \
-            libpcre3-dev \
-            libtool \
-            pkg-config \
-            python3 \
-            python3-docutils \
-            python3-sphinx \
-        && apt-get autoremove -y
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        automake \
+        autotools-dev \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        libedit-dev \
+        libgetdns-dev \
+        libjemalloc-dev \
+        libmhash-dev \
+        libncurses-dev \
+        libpcre3-dev \
+        libtool \
+        pkg-config \
+        python3 \
+        python3-docutils \
+        python3-sphinx \
+    && apt-get autoremove -y
 
 #
 # install varnish
