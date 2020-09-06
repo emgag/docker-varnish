@@ -54,5 +54,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push ${{ matrix.version }} image to dockerhub
-        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ tag }}
+        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
 
