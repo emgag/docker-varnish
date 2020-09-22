@@ -1,7 +1,7 @@
 ## 2020-09-22
 
 * Add 6.5.0 build
-    * Switch to [nigoroll/varnish-modules](https://github.com/nigoroll/varnish-modules) varnish-modules fork.
+    * Switch to [nigoroll/varnish-modules](https://github.com/nigoroll/varnish-modules) varnish-modules fork
     * Removed vmod softpurge
 * EOL'd version 6.3 
 
