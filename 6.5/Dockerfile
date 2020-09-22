@@ -29,8 +29,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.3.2
-ENV VARNISH_SHA256SUM=0823744e54a5f0bf7c7871e4c2600e81723bc75e3e42596474a6aa01db87aab8
+ENV VARNISH_VERSION=6.5.0
+ENV VARNISH_SHA256SUM=00814949f28701e164d8f246a4e37431594136c6bfcb02f64c58d77ab44861d9
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -47,11 +47,11 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=6.3
-ENV VARNISHMODULES_COMMIT=3608d1ec11793de1bc94492b4a2d1b8d48a6ca98
+ENV VARNISHMODULES_BRANCH=master
+ENV VARNISHMODULES_COMMIT=4d6593c2c97ecbabd3bd68203bace9cdbd6e960c
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
+    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
     cd varnish-modules && \
     git reset --hard ${VARNISHMODULES_COMMIT} && \
     ./bootstrap && \
@@ -61,12 +61,11 @@ RUN cd /usr/local/src/ && \
     rm -rf varnish-modules && \
     ldconfig
 
-
 #
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=88161b3018305915c9cf0d2b45f695da709275da
+ENV LIBVMOD_DYNAMIC_COMMIT=acc08dc62101a05c0e84a0a6fb7ce653502a5a9d
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -78,10 +77,10 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-dynamic && \
     ldconfig
-
 #
-# install libvmod-digest
-#
+##
+## install libvmod-digest
+##
 ENV LIBVMOD_DIGEST_BRANCH=6.3
 ENV LIBVMOD_DIGEST_COMMIT=1793bea9e9b7c7dce4d8df82397d22ab9fa296f0
 
@@ -96,11 +95,11 @@ RUN cd /usr/local/src/ && \
     rm -rf libvmod-digest && \
     ldconfig
 
-#
-# install libvmod-querystring
-#
-ENV LIBVMOD_QUERYSTRING_VERSION=2.0.1
-ENV LIBVMOD_QUERYSTRING_SHA256SUM=34540b0fb515bfbf9aaa4154be5372ce5aa8c7050f35f07dc186c85bb7e976c0
+##
+## install libvmod-querystring
+##
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0.2
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=f15a40419b8b5f77616b3adcbbee816577e2cd0376b33e14fdbe4474f2f29a01
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
