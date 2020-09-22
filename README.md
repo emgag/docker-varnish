@@ -9,7 +9,7 @@ Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.2 and 6.0.3-1**)
-* [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (header, saintmode, tcp, var, vsthrottle, xkey)
+* [varnish-modules](https://github.com/nigoroll/varnish-modules): Fork of official varnish vmod collection (tcp, vsthrottle, xkey, saintmode, bodyaccess, header, var)
 
 ## Registries
 

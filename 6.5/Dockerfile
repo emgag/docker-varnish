@@ -47,19 +47,19 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-#ENV VARNISHMODULES_BRANCH=master
-#ENV VARNISHMODULES_COMMIT=b4d5927a2fbba31b1213225138f8432572414a24
-#
-#RUN cd /usr/local/src/ && \
-#    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
-#    cd varnish-modules && \
-#    git reset --hard ${VARNISHMODULES_COMMIT} && \
-#    ./bootstrap && \
-#    ./configure && \
-#    make install && \
-#    cd /usr/local/src && \
-#    rm -rf varnish-modules && \
-#    ldconfig
+ENV VARNISHMODULES_BRANCH=master
+ENV VARNISHMODULES_COMMIT=4d6593c2c97ecbabd3bd68203bace9cdbd6e960c
+
+RUN cd /usr/local/src/ && \
+    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
+    cd varnish-modules && \
+    git reset --hard ${VARNISHMODULES_COMMIT} && \
+    ./bootstrap && \
+    ./configure && \
+    make install && \
+    cd /usr/local/src && \
+    rm -rf varnish-modules && \
+    ldconfig
 
 #
 # install libvmod-dynamic

@@ -1,17 +1,23 @@
 vcl 4.0;
 
+import blob;
+import bodyaccess;
 import cookie;
+import debug;
 import digest;
 import directors;
 import dynamic;
 import header;
-import saintmode;
+import proxy;
 import purge;
 import querystring;
+import saintmode;
 import std;
 import tcp;
+import unix;
 import var;
 import vsthrottle;
+import vtc;
 import xkey;
 
 backend default {
