@@ -1,3 +1,8 @@
+## 2020-XX-XX
+
+* Add 6.5.0 build (removed vmod softpurge)
+* EOL'd version 6.3 
+
 ## 2020-09-06
 
 * Upload new images to Github Container Registry as well 

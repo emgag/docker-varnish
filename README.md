@@ -3,13 +3,13 @@
 ![build](https://github.com/emgag/docker-varnish/workflows/build/badge.svg)
 ![MIT](https://img.shields.io/github/license/emgag/docker-varnish)
 
-Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0, 6.3 and 6.4), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
+Docker [varnish](http://varnish-cache.org/) image used within EMGAG environments. Originally based on [newsdev/docker-varnish](https://github.com/newsdev) (not available anymore), but updated to recent varnish versions (6.0, 6.4 and 6.5), shipped with some additional [vmods](http://varnish-cache.org/vmods/#vmods) and better support for custom configuration.
 
 Shipped VMODs:
 * [libvmod-digest](https://github.com/varnish/libvmod-digest): HMAC, hash and base64 functions
 * [libvmod-dynamic](https://github.com/nigoroll/libvmod-dynamic): Dynamic backend director
 * [libvmod-querystring](https://github.com/Dridi/libvmod-querystring): Advanced query-string filtering. (**Introduced in 6.2 and 6.0.3-1**)
-* [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (cookie, header, saintmode, softpurge, tcp, var, vsthrottle, xkey)
+* [varnish-modules](https://github.com/varnish/varnish-modules): Official varnish vmod collection (header, saintmode, tcp, var, vsthrottle, xkey)
 
 ## Registries
 
@@ -18,13 +18,13 @@ Shipped VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
+* [`6.5.0` (*6.4.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.5/Dockerfile), based on debian:buster-slim.
 * [`6.4.0` (*6.4.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.4/Dockerfile), based on debian:buster-slim.
-* [`6.3.2` (*6.3.2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.3/Dockerfile), based on debian:buster-slim.
 * [`6.0.6` (*6.0.6/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
 
 **Notes:** 
 * This repository does **not contain shorthand tags** (e.g. latest, 6, 6.1, etc.), just fully qualified versions corresponding to shipped varnish version and occasionally an additional package version (e.g. 6.0.3-1) if something in the image changed within a varnish release. This is because it might happen that a specific vmod stopped being supported for whatever reason and removing it will break future releases, which is outside of our control (e.g. old releases contained libvmod-geoip, which isn't supported anymore).
-* **Only 6.4, 6.3 and 6.0** are [versions supported by varnish](https://varnish-cache.org/releases/index.html), maintained in this repo and available for download from github container registry and dockerhub.
+* **Only 6.5, 6.4 and 6.0** are [versions supported by varnish](https://varnish-cache.org/releases/index.html), maintained in this repo and available for download from github container registry and dockerhub.
 * The most recent of the **unsupported** legacy versions, 4.1.11, 5.0.0. 5.1.3 and 5.2.1 are available from dockerhub as well. 
 * For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).  
 
@@ -37,7 +37,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM ghcr.io/emgag/varnish:6.4.0
+FROM ghcr.io/emgag/varnish:6.5.0
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -47,7 +47,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: ghcr.io/emgag/varnish:6.4.0
+    image: ghcr.io/emgag/varnish:6.5.0
     volumes:
       - ./varnish:/etc/varnish
     ports:
