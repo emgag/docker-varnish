@@ -18,7 +18,7 @@ Shipped VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`6.5.0` (*6.4.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.5/Dockerfile), based on debian:buster-slim.
+* [`6.5.0` (*6.5.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.5/Dockerfile), based on debian:buster-slim.
 * [`6.4.0` (*6.4.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.4/Dockerfile), based on debian:buster-slim.
 * [`6.0.6` (*6.0.6/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
 
