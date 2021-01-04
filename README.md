@@ -18,9 +18,9 @@ Shipped VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`6.5.0` (*6.5.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.5/Dockerfile), based on debian:buster-slim.
+* [`6.5.1` (*6.5.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.5/Dockerfile), based on debian:buster-slim.
 * [`6.4.0` (*6.4.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.4/Dockerfile), based on debian:buster-slim.
-* [`6.0.6` (*6.0.6/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
+* [`6.0.7` (*6.0.7/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
 
 **Notes:** 
 * This repository does **not contain shorthand tags** (e.g. latest, 6, 6.1, etc.), just fully qualified versions corresponding to shipped varnish version and occasionally an additional package version (e.g. 6.0.3-1) if something in the image changed within a varnish release. This is because it might happen that a specific vmod stopped being supported for whatever reason and removing it will break future releases, which is outside of our control (e.g. old releases contained libvmod-geoip, which isn't supported anymore).
@@ -37,7 +37,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM ghcr.io/emgag/varnish:6.5.0
+FROM ghcr.io/emgag/varnish:6.5.1
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -47,7 +47,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: ghcr.io/emgag/varnish:6.5.0
+    image: ghcr.io/emgag/varnish:6.5.1
     volumes:
       - ./varnish:/etc/varnish
     ports:
