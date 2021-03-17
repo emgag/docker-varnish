@@ -1,3 +1,10 @@
+## 2021-03-17
+
+* Add 6.6.0
+* Switch back to [official varnish-modules release](https://github.com/varnish/varnish-modules) again for 6.5.1-1 ([0.17.1](https://github.com/varnish/varnish-modules/releases/tag/0.17.1)) and 6.6.0 ([0.18.0](https://github.com/varnish/varnish-modules/releases/tag/0.18.0)). This also addresses [VSV00006 varnish-modules Denial of Service](https://varnish-cache.org/security/VSV00006.html).
+* Bump libvmod-dynamic version for 6.5.1-1  
+* EOL'd version 6.4.
+
 ## 2021-01-04
 
 * Update to 6.5.1 and 6.0.7

@@ -47,25 +47,26 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=master
-ENV VARNISHMODULES_COMMIT=4d6593c2c97ecbabd3bd68203bace9cdbd6e960c
+ENV VARNISHMODULES_VERSION=0.17.1
+ENV VARNISHMODULES_SHA256SUM=007387dc78840168da89518a5cca672dd0edb512301ef6b8909011d00801be1c
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
-    cd varnish-modules && \
-    git reset --hard ${VARNISHMODULES_COMMIT} && \
+    curl -sfLO https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz && \
+    echo "${VARNISHMODULES_SHA256SUM} ${VARNISHMODULES_VERSION}.tar.gz" | sha256sum -c - && \
+    tar -xzf ${VARNISHMODULES_VERSION}.tar.gz && \
+    cd varnish-modules-${VARNISHMODULES_VERSION} && \
     ./bootstrap && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf varnish-modules && \
+    rm -rf varnish-modules-${VARNISHMODULES_VERSION} && \
     ldconfig
 
 #
 # install libvmod-dynamic
 #
-ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=acc08dc62101a05c0e84a0a6fb7ce653502a5a9d
+ENV LIBVMOD_DYNAMIC_BRANCH=6.5
+ENV LIBVMOD_DYNAMIC_COMMIT=c8434cc8a71659a71f6b5c9a83a9799c66f7244f
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -81,7 +82,7 @@ RUN cd /usr/local/src/ && \
 ##
 ## install libvmod-digest
 ##
-ENV LIBVMOD_DIGEST_BRANCH=6.3
+ENV LIBVMOD_DIGEST_BRANCH=6.5
 ENV LIBVMOD_DIGEST_COMMIT=1793bea9e9b7c7dce4d8df82397d22ab9fa296f0
 
 RUN cd /usr/local/src/ && \

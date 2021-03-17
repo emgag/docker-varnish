@@ -29,8 +29,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.4.0
-ENV VARNISH_SHA256SUM=f636ba2d881b146f480fb52efefae468b36c2c3e6620d07460f9ccbe364a76c2
+ENV VARNISH_VERSION=6.6.0
+ENV VARNISH_SHA256SUM=d5ff82f2041276dfaeb9a652a88b6d7287cfcf7ca345bb02c438fb65d2bca2e5
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -47,26 +47,26 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=6.4
-ENV VARNISHMODULES_COMMIT=0032ed81820cbc7d8d0bdda8f0a14dc968a9de4f
+ENV VARNISHMODULES_VERSION=0.18.0
+ENV VARNISHMODULES_SHA256SUM=b226d3272bc92fb46175c417aca5a8c5f820baa2868961cae7d832b561fc159e
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
-    cd varnish-modules && \
-    git reset --hard ${VARNISHMODULES_COMMIT} && \
+    curl -sfLO https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz && \
+    echo "${VARNISHMODULES_SHA256SUM} ${VARNISHMODULES_VERSION}.tar.gz" | sha256sum -c - && \
+    tar -xzf ${VARNISHMODULES_VERSION}.tar.gz && \
+    cd varnish-modules-${VARNISHMODULES_VERSION} && \
     ./bootstrap && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf varnish-modules && \
+    rm -rf ${VARNISHMODULES_VERSION} && \
     ldconfig
-
 
 #
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=71820eb7f91ad7e87755d02e522893a9e12dd55b
+ENV LIBVMOD_DYNAMIC_COMMIT=bbcd81578e33e5cee61a4b5e6c8a552ecb09e6d8
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -78,11 +78,11 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-dynamic && \
     ldconfig
-
 #
-# install libvmod-digest
-#
-ENV LIBVMOD_DIGEST_BRANCH=6.3
+##
+## install libvmod-digest
+##
+ENV LIBVMOD_DIGEST_BRANCH=master
 ENV LIBVMOD_DIGEST_COMMIT=1793bea9e9b7c7dce4d8df82397d22ab9fa296f0
 
 RUN cd /usr/local/src/ && \
@@ -96,21 +96,26 @@ RUN cd /usr/local/src/ && \
     rm -rf libvmod-digest && \
     ldconfig
 
-#
-# install libvmod-querystring
-#
-ENV LIBVMOD_QUERYSTRING_VERSION=2.0.1
-ENV LIBVMOD_QUERYSTRING_SHA256SUM=34540b0fb515bfbf9aaa4154be5372ce5aa8c7050f35f07dc186c85bb7e976c0
+##
+## install libvmod-querystring
+##
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0.2
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=f15a40419b8b5f77616b3adcbbee816577e2cd0376b33e14fdbe4474f2f29a01
+
+# Fix build for >6.5 https://github.com/Dridi/libvmod-querystring/commit/fffe7583af018e9a9424139d9fc4080586cf3f90
+COPY libvmod-querystring-VRT_re_fini.patch /usr/local/src
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
     echo "${LIBVMOD_QUERYSTRING_SHA256SUM} vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz" | sha256sum -c - && \
     tar -xzf vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
     cd vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION} && \
+    patch src/vmod_querystring.c < /usr/local/src/libvmod-querystring-VRT_re_fini.patch && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
     rm -rf vmod-querystring* && \
+    rm /usr/local/src/libvmod-querystring-VRT_re_fini.patch && \
     ldconfig
 
 # init
