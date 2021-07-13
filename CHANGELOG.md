@@ -1,3 +1,7 @@
+## 2021-07-13
+
+* Update to 6.6.1, 6.5.2 and 6.0.8 to address [VSV00007 Varnish HTTP/2 Request Smuggling Attack](http://varnish-cache.org/security/VSV00007.html)
+
 ## 2021-03-17
 
 * Add 6.6.0
