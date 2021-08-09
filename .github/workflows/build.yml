@@ -1,11 +1,6 @@
 name: build
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - .github/workflows/build.yml
+on: push
 
 env:
   GHCR_IMAGE: ghcr.io/emgag/varnish
