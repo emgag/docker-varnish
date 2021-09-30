@@ -1,6 +1,10 @@
 name: build
 
-on: push
+on:
+  push:
+    tags:
+      - 20*
+  workflow_dispatch:
 
 env:
   GHCR_IMAGE: ghcr.io/emgag/varnish
@@ -11,14 +15,14 @@ jobs:
   build:
     strategy:
       matrix:
-        version: ["6.0", "6.5", "6.6"]
+        version: ["6.0", "6.6", "7.0"]
         include:
           - version: "6.0"
-            tag: "6.0.8"
-          - version: "6.5"
-            tag: "6.5.2"
+            tag: "6.0.8-1"
           - version: "6.6"
-            tag: "6.6.1"
+            tag: "6.6.1-1"
+          - version: "7.0"
+            tag: "7.0.0"
 
     runs-on: ubuntu-latest
     steps:
@@ -41,23 +45,23 @@ jobs:
           --platform linux/amd64,linux/arm64,linux/arm64/v8
           ${{ matrix.version }}
 
-      - name: Login to github docker registry
-        uses: azure/docker-login@v1
-        with:
-          login-server: ghcr.io
-          username: ${{ env.GHCR_USER }}
-          password: ${{ secrets.CR_PAT }}
-
-      - name: Push ${{ matrix.version }} image to GHCR
-        run: docker push ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
-
-      # also push to dockerhub as for now
-      - name: Login to dockerhub
-        uses: azure/docker-login@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Push ${{ matrix.version }} image to dockerhub
-        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
+#      - name: Login to github docker registry
+#        uses: azure/docker-login@v1
+#        with:
+#          login-server: ghcr.io
+#          username: ${{ env.GHCR_USER }}
+#          password: ${{ secrets.CR_PAT }}
+#
+#      - name: Push ${{ matrix.version }} image to GHCR
+#        run: docker push ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
+#
+#      # also push to dockerhub as for now
+#      - name: Login to dockerhub
+#        uses: azure/docker-login@v1
+#        with:
+#          username: ${{ secrets.DOCKER_USERNAME }}
+#          password: ${{ secrets.DOCKER_PASSWORD }}
+#
+#      - name: Push ${{ matrix.version }} image to dockerhub
+#        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
 
