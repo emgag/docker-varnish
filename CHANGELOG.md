@@ -1,3 +1,13 @@
+## 2021-XX-XX
+
+* Add builds for multiple architectures (Thanks to @danielcompton), supported:
+  * linux/amd64
+  * linux/arm64
+  * linux/arm64/v8
+* Add 7.0.0.
+* Add rebuilds for older versions (6.0.8-1, 6.6.1-1).
+* EOL'd version 6.5.
+
 ## 2021-07-13
 
 * Update to 6.6.1, 6.5.2 and 6.0.8 to address [VSV00007 Varnish HTTP/2 Request Smuggling Attack](http://varnish-cache.org/security/VSV00007.html)
