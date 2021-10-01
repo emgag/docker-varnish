@@ -37,31 +37,23 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      - name: Login to github docker registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ghcr.io
+          username: ${{ env.GHCR_USER }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Login to dockerhub
+        uses: azure/docker-login@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build varnish {{ matrix.version }}
         run: >
-          docker buildx build --pull
+          docker buildx build --pull --push
           -t ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
           -t ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
           --platform linux/amd64,linux/arm64,linux/arm64/v8
           ${{ matrix.version }}
-
-#      - name: Login to github docker registry
-#        uses: azure/docker-login@v1
-#        with:
-#          login-server: ghcr.io
-#          username: ${{ env.GHCR_USER }}
-#          password: ${{ secrets.CR_PAT }}
-#
-#      - name: Push ${{ matrix.version }} image to GHCR
-#        run: docker push ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
-#
-#      # also push to dockerhub as for now
-#      - name: Login to dockerhub
-#        uses: azure/docker-login@v1
-#        with:
-#          username: ${{ secrets.DOCKER_USERNAME }}
-#          password: ${{ secrets.DOCKER_PASSWORD }}
-#
-#      - name: Push ${{ matrix.version }} image to dockerhub
-#        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
-
