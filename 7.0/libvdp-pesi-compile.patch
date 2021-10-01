@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index dc0193bd17d1b8afd5d994935a07aac2749aeba0..edd4743f064e7403f92d555cba657b7c97090333 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -69,6 +69,8 @@ vdp_pesi.3: vmod_pesi.man.rst
+ 
+ # -- pesi_debug
+ 
++vmod_pesi_debug.lo: vcc_pesi_debug_if.h
++
+ vcc_pesi_debug_if.h vmod_pesi_debug.rst vmod_pesi_debug.man.rst: vcc_pesi_debug_if.c
+ 
+ vcc_pesi_debug_if.c: vmod_pesi_debug.vcc
