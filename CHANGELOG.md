@@ -1,9 +1,8 @@
 ## 2021-10-01
 
-* Add builds for multiple architectures (Thanks to @danielcompton):
+* Build container images for multiple architectures (Thanks to @danielcompton):
   * linux/amd64
   * linux/arm64 (untested)
-  * linux/arm64/v8 (untested)
 * Add 7.0.0.
 * Add rebuilds for older versions (6.0.8-1, 6.6.1-1).
 * EOL'd version 6.5.

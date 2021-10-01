@@ -2,14 +2,15 @@ name: build
 
 on:
   push:
-#    tags:
-#      - 20*
+    tags:
+      - 20*
   workflow_dispatch:
 
 env:
   GHCR_IMAGE: ghcr.io/emgag/varnish
   GHCR_USER: emgag-service
   DOCKERHUB_IMAGE: emgag/varnish
+  CONTAINER_PLATFORMS: "linux/amd64,linux/arm64"
 
 jobs:
   build:
@@ -31,33 +32,29 @@ jobs:
 
       # https://github.com/docker/setup-qemu-action
       - name: Set up QEMU
-        id: qemu
         uses: docker/setup-qemu-action@v1
 
-      - name: Available platforms
-        run: echo ${{ steps.qemu.outputs.platforms }}
+      # https://github.com/docker/setup-buildx-action
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-#      # https://github.com/docker/setup-buildx-action
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v1
-#
-#      - name: Login to github docker registry
-#        uses: docker/login-action@v1
-#        with:
-#          registry: ghcr.io
-#          username: ${{ env.GHCR_USER }}
-#          password: ${{ secrets.CR_PAT }}
-#
-#      - name: Login to dockerhub
-#        uses: docker/login-action@v1
-#        with:
-#          username: ${{ secrets.DOCKER_USERNAME }}
-#          password: ${{ secrets.DOCKER_PASSWORD }}
-#
-#      - name: Build varnish {{ matrix.version }}
-#        run: >
-#          docker buildx build --pull --push
-#          -t ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
-#          -t ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
-#          --platform linux/amd64,linux/arm64,linux/arm64/v8
-#          ${{ matrix.version }}
+      - name: Login to github docker registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ env.GHCR_USER }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Login to dockerhub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build varnish {{ matrix.version }}
+        run: >
+          docker buildx build --pull --push
+          -t ${{ env.GHCR_IMAGE }}:${{ matrix.tag }}
+          -t ${{ env.DOCKERHUB_IMAGE }}:${{ matrix.tag }}
+          --platform ${{ env.CONTAINER_PLATFORMS }}
+          ${{ matrix.version }}
