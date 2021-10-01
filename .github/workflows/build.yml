@@ -2,8 +2,8 @@ name: build
 
 on:
   push:
-#    tags:
-#      - 20*
+    tags:
+      - 20*
   workflow_dispatch:
 
 env:
