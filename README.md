@@ -22,11 +22,11 @@ Shipped VMODs:
   * linux/amd64
   * linux/arm64 (see notes)
   * linux/arm64/v8 (see notes)
-* [`6.6.1-1` (*6.6.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.6/Dockerfile), based on debian:buster-slim.
+* [`6.6.1-1` (*6.6.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.6/Dockerfile), based on debian:buster-slim.
   * linux/amd64
   * linux/arm64 (see notes)
   * linux/arm64/v8 (see notes)
-* [`6.0.8-1` (*6.0.8/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
+* [`6.0.8-1` (*6.0.8-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
   * linux/amd64
   * linux/arm64 (see notes)
   * linux/arm64/v8 (see notes)
