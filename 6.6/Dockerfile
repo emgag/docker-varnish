@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:experimental
 FROM debian:buster-slim
 LABEL maintainer="Matthias Blaser <mb@emgag.com>"
+LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
 #
 # install varnish build deps
