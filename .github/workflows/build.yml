@@ -34,6 +34,7 @@ jobs:
         uses: docker/setup-qemu-action@v1
 
       - name: Available platforms
+        id: qemu
         run: echo ${{ steps.qemu.outputs.platforms }}
 
 #      # https://github.com/docker/setup-buildx-action
