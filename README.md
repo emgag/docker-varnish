@@ -18,13 +18,13 @@ Shipped VMODs:
 
 ## Supported tags and respective `Dockerfile` links
 
-* [`7.0.0` (*7.0.0/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/7.0/Dockerfile), based on debian:bullseye-slim.
+* [`7.0.1` (*7.0.1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/7.0/Dockerfile), based on debian:bullseye-slim.
   * linux/amd64
   * linux/arm64 (see notes)
-* [`6.6.1-1` (*6.6.1-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.6/Dockerfile), based on debian:buster-slim.
+* [`6.6.1-2` (*6.6.1-2/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.6/Dockerfile), based on debian:buster-slim.
   * linux/amd64
   * linux/arm64 (see notes)
-* [`6.0.8-1` (*6.0.8-1/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
+* [`6.0.9` (*6.0.9/Dockerfile*)](https://github.com/emgag/docker-varnish/blob/master/6.0/Dockerfile), based on debian:stretch-slim.
   * linux/amd64
   * linux/arm64 (see notes)
 
@@ -44,7 +44,7 @@ From [varnish-cache.org](https://varnish-cache.org/intro/index.html): _Varnish C
 By default, varnish reads `/etc/varnish/default.vcl` on startup. Either copy your VCL file in your Dockerfile  
   
 ```
-FROM ghcr.io/emgag/varnish:7.0.0
+FROM ghcr.io/emgag/varnish:7.0.1
 COPY default.vcl /etc/varnish/default.vcl
 ```
 
@@ -54,7 +54,7 @@ or mount a volume containing the varnish configuration to `/etc/varnish`, e.g wi
 version: '3'
 services:
   varnish:
-    image: ghcr.io/emgag/varnish:7.0.0
+    image: ghcr.io/emgag/varnish:7.0.1
     volumes:
       - ./varnish:/etc/varnish
     ports:

@@ -1,3 +1,10 @@
+## 2021-11-26
+
+* Bump [6.0 to 6.0.9](https://varnish-cache.org/releases/rel6.0.9.html#rel6-0-9)
+* Bump [7.0 to 7.0.1](https://varnish-cache.org/releases/rel7.0.1.html#rel7-0-1)
+* Bump [libvmod-querystring to 2.0.3](https://github.com/Dridi/libvmod-querystring/releases/tag/v2.0.3)
+* Rebuild 6.6 (6.6.1-2) to bump libvmod-querystring 
+
 ## 2021-10-01
 
 * Build container images for multiple architectures (Thanks to @danielcompton):

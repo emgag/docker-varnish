@@ -97,26 +97,21 @@ RUN cd /usr/local/src/ && \
     rm -rf libvmod-digest && \
     ldconfig
 
-##
-## install libvmod-querystring
-##
-ENV LIBVMOD_QUERYSTRING_VERSION=2.0.2
-ENV LIBVMOD_QUERYSTRING_SHA256SUM=f15a40419b8b5f77616b3adcbbee816577e2cd0376b33e14fdbe4474f2f29a01
-
-# Fix build for >6.5 https://github.com/Dridi/libvmod-querystring/commit/fffe7583af018e9a9424139d9fc4080586cf3f90
-COPY libvmod-querystring-VRT_re_fini.patch /usr/local/src
+#
+# install libvmod-querystring
+#
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0.3
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=ec325d64241580ed136660f1d27cecd874b663431ac3abdb2d28e1ac6f4811e4
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
     echo "${LIBVMOD_QUERYSTRING_SHA256SUM} vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz" | sha256sum -c - && \
     tar -xzf vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
     cd vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION} && \
-    patch src/vmod_querystring.c < /usr/local/src/libvmod-querystring-VRT_re_fini.patch && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
     rm -rf vmod-querystring* && \
-    rm /usr/local/src/libvmod-querystring-VRT_re_fini.patch && \
     ldconfig
 
 # init

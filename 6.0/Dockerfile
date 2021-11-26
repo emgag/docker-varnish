@@ -31,8 +31,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.0.8
-ENV VARNISH_SHA256SUM=5dd245b02840b9cd7ef8b10665d8172ef902dcc006f54f2c6801cbd71d1c68fe
+ENV VARNISH_VERSION=6.0.9
+ENV VARNISH_SHA256SUM=507314583834abc0a733813d99a7b90613cb531708486e9e32b0033699e717bc
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -68,7 +68,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=6.0
-ENV LIBVMOD_DYNAMIC_COMMIT=890a391409a04010f7ce0a1cb58932d5813b4612
+ENV LIBVMOD_DYNAMIC_COMMIT=64397d7467f37ad77da45e769a294a9af17e392b
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -98,11 +98,12 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-digest* && \
     ldconfig
+
 #
 # install libvmod-querystring
 #
-ENV LIBVMOD_QUERYSTRING_VERSION=2.0.1
-ENV LIBVMOD_QUERYSTRING_SHA256SUM=34540b0fb515bfbf9aaa4154be5372ce5aa8c7050f35f07dc186c85bb7e976c0
+ENV LIBVMOD_QUERYSTRING_VERSION=2.0.3
+ENV LIBVMOD_QUERYSTRING_SHA256SUM=ec325d64241580ed136660f1d27cecd874b663431ac3abdb2d28e1ac6f4811e4
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/Dridi/libvmod-querystring/releases/download/v${LIBVMOD_QUERYSTRING_VERSION}/vmod-querystring-${LIBVMOD_QUERYSTRING_VERSION}.tar.gz && \
