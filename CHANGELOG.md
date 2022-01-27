@@ -1,3 +1,7 @@
+## 2022-01-27
+
+* Update to 7.0.2, 6.6.2 and 6.0.10 to address [VSV00008 Varnish HTTP/1 Request Smuggling Vulnerability](https://varnish-cache.org/security/VSV00008.html)
+
 ## 2021-11-26
 
 * Bump [6.0 to 6.0.9](https://varnish-cache.org/releases/rel6.0.9.html#rel6-0-9)
