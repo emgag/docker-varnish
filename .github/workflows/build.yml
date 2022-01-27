@@ -23,7 +23,7 @@ jobs:
           - version: "6.6"
             tag: "6.6.2"
           - version: "7.0"
-            tag: "7.0.2dcoke"
+            tag: "7.0.2"
 
     runs-on: ubuntu-latest
     steps:
