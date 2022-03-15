@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 LABEL maintainer="Matthias Blaser <mb@emgag.com>"
 LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
@@ -20,6 +20,8 @@ RUN apt-get update \
         libmhash-dev \
         libncurses-dev \
         libpcre3-dev \
+        libpcre2-dev \
+        libpcre2-8-0 \
         libtool \
         pkg-config \
         python3 \
@@ -30,8 +32,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.6.2
-ENV VARNISH_SHA256SUM=acb222e462dcdcc7ef3ba361345e5f99197477b0688b3a3631a1038af3705409
+ENV VARNISH_VERSION=7.1.0
+ENV VARNISH_SHA256SUM=f54ab88685667664e5b3c39eb56ac8c624b6c1093436a7f8c555491144c69eba
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -48,8 +50,8 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_VERSION=0.18.0
-ENV VARNISHMODULES_SHA256SUM=b226d3272bc92fb46175c417aca5a8c5f820baa2868961cae7d832b561fc159e
+ENV VARNISHMODULES_VERSION=0.20.0
+ENV VARNISHMODULES_SHA256SUM=909d3af2de1b7ed2c5a33cb840ab38d43037f0cb570c8fda68a94f1f40eae3a5
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz && \
@@ -66,8 +68,8 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-dynamic
 #
-ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=bbcd81578e33e5cee61a4b5e6c8a552ecb09e6d8
+ENV LIBVMOD_DYNAMIC_BRANCH=7.0
+ENV LIBVMOD_DYNAMIC_COMMIT=9666973952f62110c872d720af3dae0b85b4b597
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -79,10 +81,10 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf libvmod-dynamic && \
     ldconfig
+
 #
-##
-## install libvmod-digest
-##
+# install libvmod-digest
+#
 ENV LIBVMOD_DIGEST_BRANCH=master
 ENV LIBVMOD_DIGEST_COMMIT=1793bea9e9b7c7dce4d8df82397d22ab9fa296f0
 
