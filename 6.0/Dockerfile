@@ -1,5 +1,4 @@
 FROM debian:stretch-slim
-LABEL maintainer="Matthias Blaser <mb@emgag.com>"
 LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
 #
