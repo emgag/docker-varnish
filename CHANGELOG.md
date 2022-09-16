@@ -1,3 +1,8 @@
+## 2022-09-16
+
+* Add [7.2.0](https://varnish-cache.org/releases/rel7.2.0.html#rel7-2-0)
+* EOL'd version 7.0. 
+
 ## 2022-09-06
 
 * Update to 7.0.3 and 7.1.1 to address [VSV00009 Varnish Denial of Service Vulnerability](https://varnish-cache.org/security/VSV00009.html#vsv00009)
