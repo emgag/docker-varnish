@@ -31,8 +31,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=7.1.1
-ENV VARNISH_SHA256SUM=2cafbe2590e7d58a7bac8ad99be92e440fe4d38ada6816dd8836f22fa513a190
+ENV VARNISH_VERSION=7.1.2
+ENV VARNISH_SHA256SUM=87e9deccbac38144a7d5a77ca39be1f3305f83d9f6d2a88d8d89518712779367
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
