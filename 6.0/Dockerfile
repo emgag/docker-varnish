@@ -38,12 +38,11 @@ RUN mkdir -p /usr/local/src && \
     curl -sfLO https://varnish-cache.org/_downloads/varnish-${VARNISH_VERSION}.tgz && \
     echo "${VARNISH_SHA256SUM} varnish-${VARNISH_VERSION}.tgz" | sha256sum -c - && \
     tar -xzf varnish-${VARNISH_VERSION}.tgz && \
+    rm varnish-${VARNISH_VERSION}.tgz && \
     cd varnish-${VARNISH_VERSION} && \
     ./autogen.sh && \
     ./configure && \
-    make install && \
-    cd /usr/local/src && \
-    rm -rf varnish-*
+    make install
 
 #
 # install stock varnish module library

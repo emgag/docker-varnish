@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish
 #
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        autoconf-archive \
         automake \
         autotools-dev \
         build-essential \
@@ -18,10 +19,13 @@ RUN apt-get update \
         libjemalloc-dev \
         libmhash-dev \
         libncurses-dev \
-        libpcre3-dev \
-        libpcre2-dev \
         libpcre2-8-0 \
+        libpcre2-dev \
+        libpcre3-dev \
+        libreadline-dev \
         libtool \
+        liburing-dev \
+        libxxhash-dev \
         pkg-config \
         python3 \
         python3-docutils \
@@ -39,12 +43,11 @@ RUN mkdir -p /usr/local/src && \
     curl -sfLO https://varnish-cache.org/_downloads/varnish-${VARNISH_VERSION}.tgz && \
     echo "${VARNISH_SHA256SUM} varnish-${VARNISH_VERSION}.tgz" | sha256sum -c - && \
     tar -xzf varnish-${VARNISH_VERSION}.tgz && \
+    rm varnish-${VARNISH_VERSION}.tgz && \
     cd varnish-${VARNISH_VERSION} && \
     ./autogen.sh && \
     ./configure && \
-    make install && \
-    cd /usr/local/src && \
-    rm -rf varnish-*
+    make install
 
 #
 # install stock varnish module library
@@ -61,7 +64,8 @@ RUN cd /usr/local/src/ && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf ${VARNISHMODULES_VERSION} && \
+    rm ${VARNISHMODULES_VERSION}.tar.gz \
+    rm -rf varnish-modules-${VARNISHMODULES_VERSION} && \
     ldconfig
 
 #
@@ -114,6 +118,23 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf vmod-querystring* && \
     ldconfig
+
+#
+# install slash storage engines
+#
+#ENV SLASH_BRANCH=master
+#ENV SLASH_COMMIT=c250c9cd3cbb9b751aa230ca6b72c2937b5ff656
+#
+#RUN cd /usr/local/src/ && \
+#    git clone -b ${SLASH_BRANCH} https://gitlab.com/uplex/varnish/slash.git && \
+#    cd slash && \
+#    git reset --hard ${SLASH_COMMIT} && \
+#    ./bootstrap && \
+#    make check && \
+#    make install && \
+#    cd /usr/local/src && \
+#    rm -rf slash && \
+#    ldconfig
 
 # init
 COPY init.sh /init.sh
