@@ -1,7 +1,6 @@
-## 2023-03-17
+## 2023-03-24
 
 * Add [7.3.0](https://varnish-cache.org/releases/rel7.3.0.html#rel7-3-0)
-* Add [SLASH storage engines](https://gitlab.com/uplex/varnish/slash) to all versions >= 7.2
 * Keep built varnish source directory in image to allow building vmods which require it to be around
 * Remove dockerhub image builds
 * EOL'd version 7.1. 
