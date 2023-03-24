@@ -34,7 +34,7 @@ Shipped VMODs:
 **Notes:** 
 * While the container images are built for Linux amd64 and arm64, **only amd64 is tested and used in production**, the others may or may not work.  
 * This repository does **not contain shorthand tags** (e.g. latest, 6, 6.1, etc.), just fully qualified versions corresponding to shipped varnish version and occasionally an additional package version (e.g. 6.0.3-1) if something in the image changed within a varnish release. This is because it might happen that a specific vmod stopped being supported for whatever reason and removing it will break future releases, which is outside of our control (e.g. old releases contained libvmod-geoip, which isn't supported anymore).
-* **Only 7.2, 7.1 and 6.0** are [versions supported by varnish](https://varnish-cache.org/releases/index.html), maintained in this repo and available for download from github container registry and dockerhub.
+* **Only 7.3, 7.2 and 6.0** are [versions supported by varnish](https://varnish-cache.org/releases/index.html), maintained in this repo and available for download from github container registry and dockerhub.
 * The most recent of the **unsupported** legacy versions, 4.1.11, 5.0.0. 5.1.3 and 5.2.1 are available from dockerhub as well. 
 * For docs and code for versions 4.x and 5.x see [branch 4.1](https://github.com/emgag/docker-varnish/tree/4.1).  
 
