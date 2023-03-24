@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish
 #
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        autoconf-archive \
         automake \
         autotools-dev \
         build-essential \
@@ -18,10 +19,13 @@ RUN apt-get update \
         libjemalloc-dev \
         libmhash-dev \
         libncurses-dev \
-        libpcre3-dev \
-        libpcre2-dev \
         libpcre2-8-0 \
+        libpcre2-dev \
+        libpcre3-dev \
+        libreadline-dev \
         libtool \
+        liburing-dev \
+        libxxhash-dev \
         pkg-config \
         python3 \
         python3-docutils \
@@ -31,26 +35,26 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=7.1.2
-ENV VARNISH_SHA256SUM=87e9deccbac38144a7d5a77ca39be1f3305f83d9f6d2a88d8d89518712779367
+ENV VARNISH_VERSION=7.3.0
+ENV VARNISH_SHA256SUM=e2dbbb0ec270a90647c386866e6e226993aed46e48de751a72bb819737f14ae7
+ENV VARNISHSRC=/usr/local/src/varnish-${VARNISH_VERSION}
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
     curl -sfLO https://varnish-cache.org/_downloads/varnish-${VARNISH_VERSION}.tgz && \
     echo "${VARNISH_SHA256SUM} varnish-${VARNISH_VERSION}.tgz" | sha256sum -c - && \
     tar -xzf varnish-${VARNISH_VERSION}.tgz && \
+    rm varnish-${VARNISH_VERSION}.tgz && \
     cd varnish-${VARNISH_VERSION} && \
     ./autogen.sh && \
     ./configure && \
-    make install && \
-    cd /usr/local/src && \
-    rm -rf varnish-*
+    make install
 
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_VERSION=0.20.0
-ENV VARNISHMODULES_SHA256SUM=909d3af2de1b7ed2c5a33cb840ab38d43037f0cb570c8fda68a94f1f40eae3a5
+ENV VARNISHMODULES_VERSION=0.22.0
+ENV VARNISHMODULES_SHA256SUM=281c07ebd2a074647da6581f20b330f1b7b7841f20a34e6ed2b7bdb623fe4fbc
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz && \
@@ -61,14 +65,15 @@ RUN cd /usr/local/src/ && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf ${VARNISHMODULES_VERSION} && \
+    rm ${VARNISHMODULES_VERSION}.tar.gz \
+    rm -rf varnish-modules-${VARNISHMODULES_VERSION} && \
     ldconfig
 
 #
 # install libvmod-dynamic
 #
-ENV LIBVMOD_DYNAMIC_BRANCH=7.0
-ENV LIBVMOD_DYNAMIC_COMMIT=9666973952f62110c872d720af3dae0b85b4b597
+ENV LIBVMOD_DYNAMIC_BRANCH=master
+ENV LIBVMOD_DYNAMIC_COMMIT=32c331e79dba857b0309ba0d527ba17bf64ff2c7
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -85,7 +90,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-digest
 #
 ENV LIBVMOD_DIGEST_BRANCH=master
-ENV LIBVMOD_DIGEST_COMMIT=1793bea9e9b7c7dce4d8df82397d22ab9fa296f0
+ENV LIBVMOD_DIGEST_COMMIT=1450a9c88f86efb1cbdf4d8b53f8d2161c8ab990
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DIGEST_BRANCH} https://github.com/varnish/libvmod-digest.git && \
@@ -114,6 +119,23 @@ RUN cd /usr/local/src/ && \
     cd /usr/local/src && \
     rm -rf vmod-querystring* && \
     ldconfig
+
+#
+# install slash storage engines
+#
+#ENV SLASH_BRANCH=master
+#ENV SLASH_COMMIT=c250c9cd3cbb9b751aa230ca6b72c2937b5ff656
+#
+#RUN cd /usr/local/src/ && \
+#    git clone -b ${SLASH_BRANCH} https://gitlab.com/uplex/varnish/slash.git && \
+#    cd slash && \
+#    git reset --hard ${SLASH_COMMIT} && \
+#    ./bootstrap && \
+#    make check && \
+#    make install && \
+#    cd /usr/local/src && \
+#    rm -rf slash && \
+#    ldconfig
 
 # init
 COPY init.sh /init.sh

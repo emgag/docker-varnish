@@ -1,3 +1,10 @@
+## 2023-03-24
+
+* Add [7.3.0](https://varnish-cache.org/releases/rel7.3.0.html#rel7-3-0)
+* Keep built varnish source directory in image to allow building vmods which require it to be around
+* Remove dockerhub image builds
+* EOL'd version 7.1. 
+
 ## 2022-11-10
 
 * Update to 6.0.11, 7.1.2 and 7.2.1 to address [VSV00010 Varnish Request Smuggling Vulnerability](https://varnish-cache.org/security/VSV00010.html#vsv00010) and [VSV00011 Varnish HTTP/2 Request Forgery Vulnerability](https://varnish-cache.org/security/VSV00011.html#vsv00011)
