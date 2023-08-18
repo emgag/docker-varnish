@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
 #
@@ -66,7 +66,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=6.0
-ENV LIBVMOD_DYNAMIC_COMMIT=64397d7467f37ad77da45e769a294a9af17e392b
+ENV LIBVMOD_DYNAMIC_COMMIT=17c1fea935a2e2bc51c323069c66a77b6529d6ef
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \
@@ -82,8 +82,8 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-digest
 #
-ENV LIBVMOD_DIGEST_VERSION=1.0.2
-ENV LIBVMOD_DIGEST_SHA256SUM=9cbe87f1990282ee25e06af5a19f2217638ce96cf3f155c0f5e7c79bad6afdea
+ENV LIBVMOD_DIGEST_VERSION=1.0.3
+ENV LIBVMOD_DIGEST_SHA256SUM=872fd18aa672609195c0dc128ca29e1a1b3a11924c71a34ed7fd956f9177111c
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/varnish/libvmod-digest/archive/libvmod-digest-${LIBVMOD_DIGEST_VERSION}.tar.gz && \

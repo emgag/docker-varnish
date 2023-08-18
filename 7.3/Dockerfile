@@ -89,18 +89,19 @@ RUN cd /usr/local/src/ && \
 #
 # install libvmod-digest
 #
-ENV LIBVMOD_DIGEST_BRANCH=master
-ENV LIBVMOD_DIGEST_COMMIT=1450a9c88f86efb1cbdf4d8b53f8d2161c8ab990
+ENV LIBVMOD_DIGEST_VERSION=1.0.3
+ENV LIBVMOD_DIGEST_SHA256SUM=872fd18aa672609195c0dc128ca29e1a1b3a11924c71a34ed7fd956f9177111c
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${LIBVMOD_DIGEST_BRANCH} https://github.com/varnish/libvmod-digest.git && \
-    cd libvmod-digest && \
-    git reset --hard ${LIBVMOD_DIGEST_COMMIT} && \
+    curl -sfLO https://github.com/varnish/libvmod-digest/archive/libvmod-digest-${LIBVMOD_DIGEST_VERSION}.tar.gz && \
+    echo "${LIBVMOD_DIGEST_SHA256SUM} libvmod-digest-${LIBVMOD_DIGEST_VERSION}.tar.gz" | sha256sum -c - && \
+    tar -xzf libvmod-digest-${LIBVMOD_DIGEST_VERSION}.tar.gz && \
+    cd libvmod-digest-libvmod-digest-${LIBVMOD_DIGEST_VERSION} && \
     ./autogen.sh && \
     ./configure && \
     make install && \
     cd /usr/local/src && \
-    rm -rf libvmod-digest && \
+    rm -rf libvmod-digest* && \
     ldconfig
 
 #

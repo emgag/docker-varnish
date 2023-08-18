@@ -1,3 +1,8 @@
+## 2023-08-18
+
+* Update [vmod-digest](https://github.com/varnish/libvmod-digest) to address [VSV00012 Base64 decoding vulnerability in vmod-digest](https://varnish-cache.org/security/VSV00012.html), updated images are 7.3.0-1, 7.2.1-1 and 6.0.11-1.
+* Switch 6.0 image to debian:buster-slim because Debian Stretch is EOL'd now.
+
 ## 2023-03-24
 
 * Add [7.3.0](https://varnish-cache.org/releases/rel7.3.0.html#rel7-3-0)
