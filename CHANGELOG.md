@@ -1,3 +1,10 @@
+## 2023-12-28
+
+* Add [7.4](https://varnish-cache.org/releases/rel7.4.0.html#rel7-4-0) release.
+* Update to 6.0.12, 7.3.1 and 7.4.2 to address [VSV00013 Varnish HTTP/2 Rapid Reset Attack](https://varnish-cache.org/security/VSV00013.html#vsv00013).
+* Switch base images to debian:bookworm-slim.
+* EOL'd version 7.2. 
+
 ## 2023-08-18
 
 * Update [vmod-digest](https://github.com/varnish/libvmod-digest) to address [VSV00012 Base64 decoding vulnerability in vmod-digest](https://varnish-cache.org/security/VSV00012.html), updated images are 7.3.0-1, 7.2.1-1 and 6.0.11-1.

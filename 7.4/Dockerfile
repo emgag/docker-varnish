@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
 #
@@ -35,8 +35,9 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=7.2.1
-ENV VARNISH_SHA256SUM=4d937d1720a8ec19c533f972d9303a1c9889b7bfca7437893ae5c27cf204a940
+ENV VARNISH_VERSION=7.4.2
+ENV VARNISH_SHA256SUM=6d3d03c67514e6bb4e8584e40a381f51e708607d39337a63dc4ae42061d9a46f
+ENV VARNISHSRC=/usr/local/src/varnish-${VARNISH_VERSION}
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -52,8 +53,8 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_VERSION=0.21.0
-ENV VARNISHMODULES_SHA256SUM=d2c69323c6d4ee9ee6023c9a93739ff3828dca1017eb86030511cdb5be3cd70b
+ENV VARNISHMODULES_VERSION=0.23.0
+ENV VARNISHMODULES_SHA256SUM=dadefece55282f11865d221415afe1e2cdd2a1f479bc13a8f5c0832580e0ae76
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz && \
@@ -72,7 +73,7 @@ RUN cd /usr/local/src/ && \
 # install libvmod-dynamic
 #
 ENV LIBVMOD_DYNAMIC_BRANCH=master
-ENV LIBVMOD_DYNAMIC_COMMIT=025e9918f6cba33135e16e0fb0d86b4c34b6dd5a
+ENV LIBVMOD_DYNAMIC_COMMIT=32c331e79dba857b0309ba0d527ba17bf64ff2c7
 
 RUN cd /usr/local/src/ && \
     git clone -b ${LIBVMOD_DYNAMIC_BRANCH} https://github.com/nigoroll/libvmod-dynamic.git && \

@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
 #
@@ -35,8 +35,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=7.3.0
-ENV VARNISH_SHA256SUM=e2dbbb0ec270a90647c386866e6e226993aed46e48de751a72bb819737f14ae7
+ENV VARNISH_VERSION=7.3.1
+ENV VARNISH_SHA256SUM=a3dec46e6a8a4f472bb33da99be5068279d6924c475cce8ce7e03615ec0b972b
 ENV VARNISHSRC=/usr/local/src/varnish-${VARNISH_VERSION}
 
 RUN mkdir -p /usr/local/src && \

@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 LABEL org.opencontainers.image.source = "https://github.com/emgag/docker-varnish"
 
 #
@@ -19,7 +19,7 @@ RUN apt-get update \
         libpcre3-dev \
         libtool \
         pkg-config \
-        python \
+        python-is-python3 \
         python3 \
         python3-docutils \
         python3-sphinx \
@@ -30,8 +30,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=6.0.11
-ENV VARNISH_SHA256SUM=515900dbeb47ffd30eb39065cae033167983ecf9bd03a9435a273607e1d128db
+ENV VARNISH_VERSION=6.0.12
+ENV VARNISH_SHA256SUM=387cebd3abb34373065ac0e26e6f2bda2140c410a8b5203e115f5a672b2bd6a5
 
 RUN mkdir -p /usr/local/src && \
     cd /usr/local/src && \
@@ -47,11 +47,11 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_BRANCH=6.0
-ENV VARNISHMODULES_COMMIT=059497cbddd7faeff529c1b9038715e5ba6891ee
+ENV VARNISHMODULES_BRANCH=6.0-lts
+ENV VARNISHMODULES_COMMIT=d472c29300ffa1ea5d0916125d449ba43a64f1bd
 
 RUN cd /usr/local/src/ && \
-    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/nigoroll/varnish-modules.git && \
+    git clone -b ${VARNISHMODULES_BRANCH} https://github.com/varnish/varnish-modules.git && \
     cd varnish-modules && \
     git reset --hard ${VARNISHMODULES_COMMIT} && \
     ./bootstrap && \
