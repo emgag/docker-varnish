@@ -1,3 +1,8 @@
+## 2024-05-30
+
+* Add [7.5](https://varnish-cache.org/releases/rel7.5.0.html) release.
+* Update to 6.0.13, 7.3.2, 7.4.3 and 7.5 to address [VSV00014 Varnish HTTP/2 Broke Window Attack](https://varnish-cache.org/security/VSV00014.html#vsv00014).
+ 
 ## 2023-12-28
 
 * Add [7.4](https://varnish-cache.org/releases/rel7.4.0.html#rel7-4-0) release.

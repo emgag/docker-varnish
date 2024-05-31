@@ -35,8 +35,8 @@ RUN apt-get update \
 #
 # install varnish
 #
-ENV VARNISH_VERSION=7.4.3
-ENV VARNISH_SHA256SUM=eb9e43507f836eef2e32802d46dd3cf92eca3d547ba4b640fda59b407cdb1b88
+ENV VARNISH_VERSION=7.5.0
+ENV VARNISH_SHA256SUM=fca61b983139e1aac61c4546d12a1a3ab9807dbb1d8314571e3148c93ff72b5d
 ENV VARNISHSRC=/usr/local/src/varnish-${VARNISH_VERSION}
 
 RUN mkdir -p /usr/local/src && \
@@ -53,8 +53,8 @@ RUN mkdir -p /usr/local/src && \
 #
 # install stock varnish module library
 #
-ENV VARNISHMODULES_VERSION=0.23.0
-ENV VARNISHMODULES_SHA256SUM=dadefece55282f11865d221415afe1e2cdd2a1f479bc13a8f5c0832580e0ae76
+ENV VARNISHMODULES_VERSION=0.24.0
+ENV VARNISHMODULES_SHA256SUM=b44fc6d99a057ab85c01fc1dad1a625608d76971700201ec0f186fff147fe798
 
 RUN cd /usr/local/src/ && \
     curl -sfLO https://github.com/varnish/varnish-modules/archive/${VARNISHMODULES_VERSION}.tar.gz && \
