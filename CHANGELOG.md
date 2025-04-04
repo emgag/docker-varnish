@@ -1,11 +1,11 @@
 ## 2025-04-05
 
 * Return from hiatus
-* Bump [vmod-querystring](https://git.sr.ht/~dridi/vmod-querystring) to 2.0.4 and use update location
+* Bump [vmod-querystring](https://git.sr.ht/~dridi/vmod-querystring) to 2.0.4 and use updated location
 * Add 6.0.13-1 tag with updated vmod-querystring.
 * Add [7.6](https://varnish-cache.org/releases/rel7.6.2.html) release.
 * Add [7.7](https://varnish-cache.org/releases/rel7.7.0.html) release.
-* EOL'd version 7.3, 7.4 and 7.3
+* EOL'd version 7.3, 7.4 and 7.3.
 
 ## 2024-05-30
 
