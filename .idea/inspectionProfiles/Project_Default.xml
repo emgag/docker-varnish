@@ -1,0 +1,46 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="32">
+            <item index="0" class="java.lang.String" itemvalue="mkdocs-material" />
+            <item index="1" class="java.lang.String" itemvalue="drf-spectacular-sidecar" />
+            <item index="2" class="java.lang.String" itemvalue="django-htmx" />
+            <item index="3" class="java.lang.String" itemvalue="django-tables2" />
+            <item index="4" class="java.lang.String" itemvalue="feedparser" />
+            <item index="5" class="java.lang.String" itemvalue="django-prometheus" />
+            <item index="6" class="java.lang.String" itemvalue="strawberry-graphql-django" />
+            <item index="7" class="java.lang.String" itemvalue="drf-spectacular" />
+            <item index="8" class="java.lang.String" itemvalue="netaddr" />
+            <item index="9" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="10" class="java.lang.String" itemvalue="django-cors-headers" />
+            <item index="11" class="java.lang.String" itemvalue="django-rich" />
+            <item index="12" class="java.lang.String" itemvalue="tablib" />
+            <item index="13" class="java.lang.String" itemvalue="tzdata" />
+            <item index="14" class="java.lang.String" itemvalue="mkdocstrings" />
+            <item index="15" class="java.lang.String" itemvalue="django-debug-toolbar" />
+            <item index="16" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="17" class="java.lang.String" itemvalue="social-auth-core" />
+            <item index="18" class="java.lang.String" itemvalue="svgwrite" />
+            <item index="19" class="java.lang.String" itemvalue="django-mptt" />
+            <item index="20" class="java.lang.String" itemvalue="social-auth-app-django" />
+            <item index="21" class="java.lang.String" itemvalue="strawberry-graphql" />
+            <item index="22" class="java.lang.String" itemvalue="django-filter" />
+            <item index="23" class="java.lang.String" itemvalue="Django" />
+            <item index="24" class="java.lang.String" itemvalue="psycopg" />
+            <item index="25" class="java.lang.String" itemvalue="django-pglocks" />
+            <item index="26" class="java.lang.String" itemvalue="django-redis" />
+            <item index="27" class="java.lang.String" itemvalue="django-timezone-field" />
+            <item index="28" class="java.lang.String" itemvalue="nh3" />
+            <item index="29" class="java.lang.String" itemvalue="django-rq" />
+            <item index="30" class="java.lang.String" itemvalue="django-taggit" />
+            <item index="31" class="java.lang.String" itemvalue="django-graphiql-debug-toolbar" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
